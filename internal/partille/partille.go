@@ -7,6 +7,7 @@ import (
 	"io"
 	"os"
 	"path"
+	"strconv"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -17,22 +18,31 @@ type Storage struct {
 
 // migrate() applies structural changes and data migrations to the database
 func migrate(db *sql.DB) error {
-	// if we want to, we could add a "changelog" table or such,
-	// to only apply migrations that haven't been applied yet
+	// if we want to, we could add a "changelog" table or such (and to hold a
+	// lock over the process), to only apply migrations that haven't been
+	// applied yet
 	stmts := []string{
 		`create table if not exists goodread_books (
 			title text not null,
 			author text not null,
-			isbn text not null unique,
-			isbn13 text not null unique,
+			isbn text default null,
+			isbn13 text default null,
 			average_rating text not null,
 			original_publication_year int not null
 		) strict`,
 
 		`create table if not exists users (
-			username text not null check(length(trim(username)) > 0),
-			image blob default null
+			username text not null check(length(trim(username)) > 0) unique,
+			image blob default null,
+			last_fetched_goodreads_books_at text default null
 		) strict`,
+
+		`create table if not exists user_goodread_books (
+			user_id int not null,
+			book_id int not null
+		)`,
+
+		`create unique index if not exists ugb on user_goodread_books(user_id, book_id)`,
 	}
 
 	for i, stmt := range stmts {
@@ -60,6 +70,7 @@ func NewStorage(filename string) (*Storage, error) {
 		}
 		filename = path.Join(configDir, "partille-goodreads", filename)
 	}
+	filename = filename + "?integrity_check=1&_journal_mode=WAL"
 	db, err := sql.Open("sqlite3", filename)
 	if err != nil {
 		return nil, fmt.Errorf("opendb: failed to open sqlite memory db: %w", err)
@@ -73,7 +84,7 @@ func NewStorage(filename string) (*Storage, error) {
 	}, nil
 }
 
-func (s *Storage) ImportGoodreadsCsv(reader *csv.Reader) error {
+func (s *Storage) ImportGoodreadsCsv(reader *csv.Reader, userId int) error {
 	first := true
 	for {
 		record, err := reader.Read()
@@ -90,8 +101,6 @@ func (s *Storage) ImportGoodreadsCsv(reader *csv.Reader) error {
 			continue
 		}
 
-		fmt.Println(record)
-
 		// 16: bookshelves
 		if record[16] != "to-read" {
 			// we're only interested in unread books
@@ -106,10 +115,76 @@ func (s *Storage) ImportGoodreadsCsv(reader *csv.Reader) error {
 		// 8: average rating
 		// 13: original publication year
 		// 16: bookshelves
-		s.db.Exec(`insert into goodread_books
-		(title, author, isbn, isbn13, average_rating, original_publication_year)
-		values (?, ?, ?, ?, ?, ?)`, record[1], record[2], record[5], record[6], record[8], record[13])
+		book := Book{
+			Title:         record[1],
+			Author:        record[2],
+			Isbn:          record[5],
+			Isbn13:        record[6],
+			AverageRating: record[8],
+		}
+
+		originalPublicationYear, err := strconv.Atoi(record[13])
+		if err == nil {
+			book.OriginalPublicationYear = originalPublicationYear
+		}
+
+		bookId, err := s.StoreBook(book)
+		if err != nil {
+			return fmt.Errorf("failed to store book: %w", err)
+		}
+		err = s.StoreBookForUser(bookId, userId)
+		if err != nil {
+			return fmt.Errorf("failed to store book: %w", err)
+		}
 	}
 
 	return nil
+}
+
+type Book struct {
+	Title                   string
+	Author                  string
+	Isbn                    string
+	Isbn13                  string
+	AverageRating           string
+	OriginalPublicationYear int
+}
+
+// StoreBook doesn't fail if the book already exists
+func (s *Storage) StoreBook(book Book) (int, error) {
+	// TODO if duplicate, return original rowid
+	res, err := s.db.Exec(`insert into goodread_books
+		(title, author, isbn, isbn13, average_rating, original_publication_year)
+		values (?, ?, ?, ?, ?, ?)
+		returning rowid`, book.Title, book.Author, book.Isbn, book.Isbn13, book.AverageRating, book.OriginalPublicationYear)
+	if err != nil {
+		return 0, fmt.Errorf("storebook: failed to insert book: %w", err)
+	}
+	id, err := res.LastInsertId()
+	if err != nil {
+		return 0, fmt.Errorf("storebook: failed to get last insert id: %w", err)
+	}
+	return int(id), nil
+}
+
+func (s *Storage) StoreBookForUser(bookId, userId int) error {
+	_, err := s.db.Exec(`insert into user_goodread_books
+		(user_id, book_id)
+		values (?, ?)`, userId, bookId)
+	if err != nil {
+		return fmt.Errorf("storebookforuser: failed to insert: %w", err)
+	}
+	return nil
+}
+
+func (s *Storage) CreateUser(username string) (int, error) {
+	res, err := s.db.Exec("insert into users (username) values (?) returning rowid", username)
+	if err != nil {
+		return 0, fmt.Errorf("createuser: failed to insert user: %w", err)
+	}
+	id, err := res.LastInsertId()
+	if err != nil {
+		return 0, fmt.Errorf("createuser: failed to get last insert id: %w", err)
+	}
+	return int(id), nil
 }
