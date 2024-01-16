@@ -2,14 +2,11 @@
 <html lang="en">
 <head></head>
 <body>
-    {{if not .LoggerInUser}}
-    {{else}}
-        {{if .GoodreadsUserId}}
-        <h1>Here are some books for you</h1>
-        {{else}}
-        <a href="/goodreads">Setup your goodreads connection</a>
-        {{end}}
+    <h1>Here are some books for you</h1>
+    <ul>
+    {{range .Books}}
+    <li>{{.Title}}</li>
     {{end}}
-
+    </ul>
 </body>
 </html>
