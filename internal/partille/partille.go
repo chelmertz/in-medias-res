@@ -34,7 +34,8 @@ func migrate(db *sql.DB) error {
 		`create table if not exists users (
 			username text not null check(length(trim(username)) > 0) unique,
 			image blob default null,
-			last_fetched_goodreads_books_at text default null
+			last_fetched_goodreads_books_at text default null,
+			goodreads_id int default null
 		) strict`,
 
 		`create table if not exists user_goodread_books (
@@ -175,6 +176,11 @@ func (s *Storage) StoreBookForUser(bookId, userId int) error {
 		return fmt.Errorf("storebookforuser: failed to insert: %w", err)
 	}
 	return nil
+}
+
+type User struct {
+	Username string
+	Id       int
 }
 
 func (s *Storage) CreateUser(username string) (int, error) {

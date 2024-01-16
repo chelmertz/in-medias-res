@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+<body>
+{{range .Users}}
+<p><img title="{{.Name}}" src="https://robohash.org/{{.Name}}">{{.Name}}</img></p>
+{{end}}
+
+<p>Add new user</p>
+<form method="post">
+<p><label>Nickname: <input id="name" type="text"></label></p>
+</form>
+</body>
+</html>

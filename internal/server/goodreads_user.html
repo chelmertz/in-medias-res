@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+<body>
+    <h1>Setup your goodreads connection</h1>
+
+    <p>Go to your profile, like
+        <a href="https://www.goodreads.com/review/list/2793247-carl-helmertz?shelf=to-read">mine</a>
+        and copy paste the url below:
+<form action="{{.GoodreadsUserForm}}">
+<p><label>Goodreads profile URL: <input id="profile_url" type="text" value="{{.GoodreadsUserId}}"></label></p>
+<input type="submit" value="Setup">
+</form>
+</body>
+</html>
