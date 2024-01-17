@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	storage, err := partille.NewStorage("asdf.sqlite3")
+	storage, err := partille.NewStorage("in_medias_res.sqlite3")
 	if err != nil {
 		panic(err)
 	}
