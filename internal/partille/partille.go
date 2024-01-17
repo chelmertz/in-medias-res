@@ -225,7 +225,6 @@ type BookQuery struct {
 }
 
 type BookAvailabilityPoller func(q BookQuery) (*PollResult, error)
-type BookAvailabilityChecker func() ([]BookQuery, error)
 
 // RefreshBookAvailabilities looks for books in the database that needs to be
 // checked for availability, and uses the poller function to find out the status
