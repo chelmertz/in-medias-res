@@ -241,6 +241,8 @@ func (s *Storage) RefreshBookAvailabilities(poller BookAvailabilityPoller) error
 
 	where p.goodreads_book_id is null
 	or p.last_fetched_at < ?
+
+	order by g.average_rating desc
 	`, thresholdDate)
 
 	if err != nil {
