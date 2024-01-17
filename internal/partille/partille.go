@@ -233,7 +233,7 @@ func (s *Storage) RefreshBookAvailabilities(poller BookAvailabilityPoller) error
 	from goodread_books g
 
 	left join partille_book_status p
-	on b.rowid = p.goodreads_book_id
+	on g.rowid = p.goodreads_book_id
 
 	where p.goodreads_book_id is null
 	or p.last_fetched_at < ?
