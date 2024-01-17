@@ -1,4 +1,4 @@
-# partille-goodreads
+# in medias res
 
 See which of your to-read books are available to borrow, at Partille library.
 

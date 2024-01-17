@@ -11,6 +11,7 @@ import (
 	"path"
 	"regexp"
 	"strconv"
+	"time"
 
 	_ "github.com/mattn/go-sqlite3"
 	"golang.org/x/net/html"
@@ -48,6 +49,12 @@ func migrate(db *sql.DB) error {
 		)`,
 
 		`create unique index if not exists ugb on user_goodread_books(user_id, book_id)`,
+
+		`create table if not exists partille_book_status (
+			goodreads_book_id int not null unique,
+			is_available boolean not null,
+			last_fetched_at text not null
+		)`,
 	}
 
 	for i, stmt := range stmts {
@@ -73,16 +80,24 @@ func NewStorage(filename string) (*Storage, error) {
 		if err != nil {
 			return nil, fmt.Errorf("opendb: failed to get user config dir: %w", err)
 		}
-		filename = path.Join(configDir, "partille-goodreads", filename)
+
+		if _, err := os.Stat(path.Join(configDir, "in-medias-res")); os.IsNotExist(err) {
+			err := os.Mkdir(path.Join(configDir, "in-medias-res"), 0700)
+			if err != nil {
+				return nil, fmt.Errorf("opendb: failed to create config dir: %w", err)
+			}
+		}
+
+		filename = path.Join(configDir, "in-medias-res", filename)
 	}
 	filename = filename + "?integrity_check=1&_journal_mode=WAL"
 	db, err := sql.Open("sqlite3", filename)
 	if err != nil {
-		return nil, fmt.Errorf("opendb: failed to open sqlite memory db: %w", err)
+		return nil, fmt.Errorf("opendb: failed to open sqlite memory db: %w, filename: %s", err, filename)
 	}
 	err = migrate(db)
 	if err != nil {
-		return nil, fmt.Errorf("opendb: failed to migrate db: %w", err)
+		return nil, fmt.Errorf("opendb: failed to migrate db: %w, filename: %s", err, filename)
 	}
 	return &Storage{
 		db: db,
@@ -199,16 +214,80 @@ func (s *Storage) CreateUser(username string) (int, error) {
 	return int(id), nil
 }
 
-type PartilleBibliotekBook struct {
-	Title     string
-	DetailUrl string
-	Available bool
+type BookQuery struct {
+	Id     int
+	Author string
+	Title  string
+}
+
+type BookAvailabilityPoller func(q BookQuery) (*PollResult, error)
+type BookAvailabilityChecker func() ([]BookQuery, error)
+
+// RefreshBookAvailabilities looks for books in the database that needs to be
+// checked for availability, and uses the poller function to find out the status
+func (s *Storage) RefreshBookAvailabilities(poller BookAvailabilityPoller) error {
+	// only update things every 10 days, this Should Be Enough For Everyone
+	thresholdDate := time.Now().UTC().Add(-24 * time.Hour * 10).Format(time.RFC3339)
+
+	rows, err := s.db.Query(`select g.rowid, g.title, g.author
+	from goodread_books g
+
+	left join partille_book_status p
+	on b.rowid = p.goodreads_book_id
+
+	where p.goodreads_book_id is null
+	or p.last_fetched_at < ?
+	`, thresholdDate)
+
+	if err != nil {
+		return fmt.Errorf("refreshbookavailabilities: failed to query db: %w", err)
+	}
+
+	queries := make([]BookQuery, 0)
+	for rows.Next() {
+		query := BookQuery{}
+		err := rows.Scan(query.Id, query.Title, query.Author)
+		queries = append(queries, query)
+		if err != nil {
+			return fmt.Errorf("refreshbookavailabilities: failed to scan row: %w", err)
+		}
+	}
+
+	now := time.Now().UTC().Format(time.RFC3339)
+	for _, query := range queries {
+		pollResult, err := poller(query)
+		if err != nil {
+			return fmt.Errorf("refreshbookavailabilities: failed to poll: %w", err)
+		}
+		isAvailable := false
+		if pollResult != nil {
+			isAvailable = pollResult.IsAvailable
+		}
+		_, err = s.db.Exec(`
+		update partille_book_status
+		set last_fetched_at = ?,
+		available = ?
+		where goodreads_book_id = ?
+		`, now, isAvailable, query.Id)
+		if err != nil {
+			return fmt.Errorf("refreshbookavailabilities: failed to store availability: %w for query: %+v and result: %+v", err, query, pollResult)
+		}
+	}
+
+	return nil
+}
+
+type PollResult struct {
+	Title string
+	Url   string
+	// the consumer must check IsAvailable first (consider it a Maybe/Option)
+	IsAvailable bool
 }
 
 // PollPartilleBibliotek returns a book from the Partille Bibliotek,
 // which you should match against the book you're looking for, probably
 // coming from Goodreads
-func PollPartilleBibliotek(author, title string) (*PartilleBibliotekBook, error) {
+func PollPartilleBibliotek(q BookQuery) (*PollResult, error) {
 	pbUrl := "https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-search.pl?advsearch=1&idx=au%2Cwrdl&q=raymond+chandler&op=AND&idx=ti&q=the+big+sleep&weight_search=on&sort_by=popularity_dsc&do=Search"
 	searchUrl, err := url.Parse(pbUrl)
 	if err != nil {
@@ -218,10 +297,10 @@ func PollPartilleBibliotek(author, title string) (*PartilleBibliotekBook, error)
 	query := searchUrl.Query()
 	query.Set("advsearch", "1")
 	query.Add("idx", "au,wrdl")
-	query.Add("q", author)
+	query.Add("q", q.Author)
 	query.Set("op", "AND")
 	query.Add("idx", "ti")
-	query.Add("q", title)
+	query.Add("q", q.Title)
 	query.Set("weight_search", "on")
 	query.Set("sort_by", "popularity_dsc")
 	query.Set("sort_by", "popularity_dsc")
@@ -249,14 +328,17 @@ func PollPartilleBibliotek(author, title string) (*PartilleBibliotekBook, error)
 	return book, nil
 }
 
+var _ BookAvailabilityPoller = PollPartilleBibliotek // assert the type
+
 var trailingTitleScrap = regexp.MustCompile(`(\s|/)+$`)
 
-func firstResult(node *html.Node) *PartilleBibliotekBook {
-	book := &PartilleBibliotekBook{}
+func firstResult(node *html.Node) *PollResult {
+	book := &PollResult{}
 	foundOne := false
 
-	var traverse func(*html.Node)
-	traverse = func(n *html.Node) {
+	// thanks Partille library for not using a SPA <3
+	var traverseDom func(*html.Node)
+	traverseDom = func(n *html.Node) {
 		isElementWithTitle := false
 		if n.Type == html.ElementNode && n.Data == "a" {
 			for _, attr := range n.Attr {
@@ -267,23 +349,23 @@ func firstResult(node *html.Node) *PartilleBibliotekBook {
 					book.Title = n.FirstChild.Data
 					book.Title = trailingTitleScrap.ReplaceAllString(book.Title, "")
 				} else if attr.Key == "href" {
-					book.DetailUrl = attr.Val
+					book.Url = attr.Val
 					// the detail url is relative in the DOM
-					book.DetailUrl = "https://bibliotekskatalog.partille.se" + book.DetailUrl
+					book.Url = "https://bibliotekskatalog.partille.se" + book.Url
 				}
 			}
 			if !isElementWithTitle {
-				book.DetailUrl = ""
+				book.Url = ""
 			}
 		}
 
 		// continue traversing
 		for c := n.FirstChild; c != nil && !foundOne; c = c.NextSibling {
-			traverse(c)
+			traverseDom(c)
 		}
 	}
 
-	traverse(node)
+	traverseDom(node)
 	if !foundOne {
 		return nil
 	}

@@ -34,8 +34,8 @@ func TestCanParseResult(t *testing.T) {
 	}
 
 	expectedUrl := "https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-detail.pl?biblionumber=10330"
-	if result.DetailUrl != expectedUrl {
-		t.Errorf("expected url to be %s, got %s", expectedUrl, result.DetailUrl)
+	if result.Url != expectedUrl {
+		t.Errorf("expected url to be %s, got %s", expectedUrl, result.Url)
 	}
 }
 

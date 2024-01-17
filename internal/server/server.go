@@ -13,11 +13,11 @@ var templates embed.FS
 
 func index() http.Handler {
 	tmpl := template.Must(template.ParseFS(templates, "index.html"))
-	type indexData struct {
+	type view struct {
 		Books []partille.Book
 	}
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		var data indexData
+		var data view
 		data.Books = []partille.Book{
 			{
 				Title: "The Hobbit",
@@ -26,15 +26,34 @@ func index() http.Handler {
 		tmpl.Execute(w, data)
 	})
 }
+
 func users() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-func NewMux() http.Handler {
+func availabilitiesPartille(storage *partille.Storage) http.Handler {
+	poller := partille.PollPartilleBibliotek
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodPost {
+			w.WriteHeader(http.StatusMethodNotAllowed)
+			return
+		}
+
+		err := storage.RefreshBookAvailabilities(poller)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte(err.Error()))
+			return
+		}
+	})
+}
+
+func NewMux(storage *partille.Storage) http.Handler {
 	mux := http.NewServeMux()
 	mux.Handle("/", index())
 	mux.Handle("/users", users())
+	mux.Handle("/availabilities/library/partille", availabilitiesPartille(storage))
 
 	return mux
 }
