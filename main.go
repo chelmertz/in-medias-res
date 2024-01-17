@@ -13,6 +13,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	defer storage.Close()
+
 	mux := server.NewMux(storage)
 	fmt.Println("Listening on http://localhost:8080")
 	http.ListenAndServe(":8080", mux)

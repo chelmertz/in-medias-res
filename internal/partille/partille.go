@@ -104,6 +104,10 @@ func NewStorage(filename string) (*Storage, error) {
 	}, nil
 }
 
+func (s *Storage) Close() {
+	s.db.Close()
+}
+
 func (s *Storage) ImportGoodreadsCsv(reader *csv.Reader, userId int) error {
 	first := true
 	for {
