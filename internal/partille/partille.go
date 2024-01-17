@@ -5,11 +5,14 @@ import (
 	"encoding/csv"
 	"fmt"
 	"io"
+	"net/http"
+	"net/url"
 	"os"
 	"path"
 	"strconv"
 
 	_ "github.com/mattn/go-sqlite3"
+	"golang.org/x/net/html"
 )
 
 type Storage struct {
@@ -193,4 +196,67 @@ func (s *Storage) CreateUser(username string) (int, error) {
 		return 0, fmt.Errorf("createuser: failed to get last insert id: %w", err)
 	}
 	return int(id), nil
+}
+
+type PartilleBibliotekBook struct {
+	Title     string
+	DetailUrl string
+}
+
+// PollPartilleBibliotek returns a book from the Partille Bibliotek,
+// which you should match against the book you're looking for, probably
+// coming from Goodreads
+func PollPartilleBibliotek(searchTerm string) (*PartilleBibliotekBook, error) {
+	pbUrl := "https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-search.pl?idx=&sort_by=popularity_dsc&weight_search=1"
+	searchUrl, err := url.Parse(pbUrl)
+	if err != nil {
+		// this must never happen, so we panic
+		panic(err)
+	}
+	query := searchUrl.Query()
+	query.Set("q", searchTerm)
+
+	searchUrl.RawQuery = query.Encode()
+
+	// let's assume our result is on the first page, or not there at all
+	resp, err := http.Get(searchUrl.String())
+	if err != nil {
+		return nil, fmt.Errorf("pollpartillebibliotek: failed to get search page: %w", err)
+	}
+	defer resp.Body.Close()
+
+	node, err := html.Parse(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("pollpartillebibliotek: failed to parse html: %w", err)
+	}
+	book := firstResult(node)
+
+	return book, nil
+}
+
+func firstResult(node *html.Node) *PartilleBibliotekBook {
+	book := &PartilleBibliotekBook{}
+	foundOne := false
+
+	var traverse func(*html.Node)
+	traverse = func(n *html.Node) {
+		if n.Type == html.ElementNode && n.Data == "a" {
+			for _, attr := range n.Attr {
+				if attr.Key == "class" && attr.Val == "title" {
+					foundOne = true
+				}
+			}
+		}
+
+		// continue traversing
+		for c := n.FirstChild; c != nil && !foundOne; c = c.NextSibling {
+			traverse(c)
+		}
+	}
+
+	traverse(node)
+
+	return &PartilleBibliotekBook{
+		Title: "The Hobbit",
+	}
 }

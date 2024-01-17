@@ -1,0 +1,1980 @@
+
+
+
+
+
+
+
+     
+     
+
+
+<!DOCTYPE html>
+<!-- TEMPLATE FILE: opac-results.tt -->
+
+
+
+
+
+<html lang="en" class="no-js">
+<head>
+
+<title>
+
+    
+        Results of search for 'asdjkfsadkfksadjf'
+    
+
+&rsaquo;
+Partille bibliotek catalog
+</title>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Koha 21.1111000" /> <!-- leave this for stats -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="shortcut icon" href="/opac-tmpl/bootstrap/images/favicon.ico" type="image/x-icon" />
+
+    <link href="/opac-tmpl/bootstrap/lib/jquery/jquery-ui-1.12.1.min_21.1111000.css" rel="stylesheet" type="text/css">
+
+
+    
+        
+    
+
+
+    <link href="/opac-tmpl/bootstrap/css/opac_21.1111000.css" rel="stylesheet" type="text/css">
+
+
+
+
+    <link href="/opac-tmpl/bootstrap/css/print_21.1111000.css" media="print" rel="stylesheet" type="text/css">
+
+
+    <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+:root {
+  --partille-blue: #00549E;
+  --partille-yellow: #FFE735;
+  --partille-lightblue: #87B2D8;
+  --partille-lightbluebackground: #eff5fa;
+  --partille-footeryellow: #fff9cc;
+  --partille-darkgray: #364347;
+}
+
+
+
+body {
+  background: #ffffff
+}
+
+.main {
+    background-color: #e4e0di;
+    border: 1px solid #ffffff;
+    padding: 0rem 0;
+}
+
+.btn-primary {
+    background-color: #00549E;
+    border: 2px solid #eee;
+}
+
+#opac-main-search label {
+    color: #000;
+}
+
+
+#opac-main-search {
+    background: #f0f3f3;
+    margin: 20px 0;
+    padding: 15px;
+}
+
+
+  a:link, a:visited {color:#00549F;}
+
+#changelanguage {
+    background-color: #e4e0di;
+    border-top: 0px solid #eee;
+    padding: 0 1rem;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+
+
+#opaccredits  {
+  padding-bottom:25px;
+  padding-top:25px;
+}   
+
+#opacheader  {
+  padding-bottom:20px;
+  padding-top:20px;
+}   
+
+
+
+
+body{
+	color:black;
+}
+
+body, a, h1, h2, h3, h4, h1 a, h2 a, h3 a, h4 a,
+.fonts-loaded body, .fonts-loaded button, .fonts-loaded input, .fonts-loaded optgroup, .fonts-loaded option, .fonts-loaded select, .fonts-loaded textarea{
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4 {
+	color: var(--partille-darkgray) !important;
+}
+
+a:link, a:visited{
+	color: var(--partille-blue);
+}
+
+.btn-primary, .btn-primary:focus, .btn-primary:hover, .btn-primary:active {
+	background-color:var(--partille-blue) !important;
+	color:white;
+    border-radius: 20px;
+    border:0 !important;
+  	outline: 0 !important;
+  	outline-style:solid !important;
+    font-weight:600;
+  	box-shadow: none !important;
+}
+
+.btn-default, .btn-default:link {
+	color:var(--partille-blue) !important;
+	background-color:var(--partille-lightbluebackground) !important;
+    border-radius: 20px;
+    border:0;
+  	outline: 0 !important;
+  	outline-style:solid !important;
+    font-weight:600;
+  	box-shadow: none !important;
+}
+
+.btn-default:link:focus, .btn-default:link:hover, .btn-default:link:active,
+.btn-default:focus, .btn-default:hover, .btn-default:active {
+	color:var(--partille-blue) !important;
+	background-color:var(--partille-lightbluebackground) !important;
+    border-radius: 20px;
+    border:2 px solid var(--partille-blue) !important;
+  	outline: 0 !important;
+  	outline-style:solid !important;
+    font-weight:600;
+  	box-shadow: none !important;
+}
+
+#opac-main-search,
+.breadcrumb,
+#search-facets,
+#toolbar, #toolbar.clearfix,
+.table-striped tbody tr:nth-of-type(odd),
+#action,
+.pg_menu .pg_link a, .pg_menu .pg_link span,
+.view {
+	background-color: var(--partille-lightbluebackground);
+}
+
+footer {
+	background-image:url(/Partille_kommun_Siluett_2017_rak_bl%C3%A5.png);
+  height:300px;
+  background-size: cover;
+background-repeat: no-repeat;
+}
+
+.navbar-nav>li>a,
+#opac-main-search label {
+	color: var(--partille-darkgray) !important;
+}
+
+#logo{
+	background-image: url(/logo_partillekommun_farg_rgb.png);
+  background-size:contain;
+  width:300px;
+  min-height:25px;
+}
+
+/***** SLUT PARTILLE UTSEENDESTANDARD *******/
+/******************************************/
+/******************************************/
+
+.no-image { 
+  display: none; /* Visar inget när bild saknas */ 
+}
+
+
+.coverimages {
+  float: left; /* Flytta bild till vänster sida  */
+  margin: 10px 25px 10px 0px; /* Avstånd */  
+}
+
+
+.searchresults .toolbar, #selections-toolbar { /* Verktygspanelen överst på resultatsidan */
+  background: #fff; /* Vit bakgrund (istället för grå original) */
+  border: none; /* Ta bort ram */
+  
+}
+
+#toolbar > div.sort_by.col-sm-auto > label:nth-child(3) { /* Gör texten 'Resultat per sida' normaltjock */
+  font-weight: 400
+    }
+
+
+#floating > div.selections-toolbar.toolbar.noprint { /* Panel överst på List-sidor */
+  background: #fff; /* Vit bakgrund (istället för grå original) */
+  border: none; /* Ta bort ram */ 
+  }
+
+.searchresults a.title { /* Ändringar på boktitel */
+  font-size: 1.5em; /* Större text */
+  display: table-cell; /* Annan typ av visningsformat */
+  padding: 5px 0 5px; /* Avstånd */
+}
+
+/*.coverimages img {
+  height: 130px;  /* storlek på omslagsbilder i sökresultat */
+/*}*/
+
+
+
+#opacheader > div > div > h1 > a {
+	text-decoration: none; /* Tar bort understecket när man hovrar på hyperlänken i Opacheadern*/
+}
+
+
+
+/*Ändrar storlek och centrerar sökrutan*/
+@media (min-width: 768px){
+#searchform > div > div.col.order-4.order-sm-3 {
+  min-width: 550px;
+}
+
+#opac-main-search {
+	display:flex;
+  justify-content:center;
+  }
+}
+/* Slut */ 
+
+
+
+
+/*Responsiv rubrik startsida "Bibliotekskatalog för Part..."*/
+@media screen and (min-width: 601px) {
+#opacheader > div > div > h1 > a > span > span:nth-child(1){
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 600px) { 
+#opacheader > div > div > h1 > a > span > span:nth-child(1){
+    font-size: 35px;
+  }
+}
+/*SLUT Responsiv rubrik startsida "Bibliotekskatalog för Part..."*/
+
+
+#login { /*En blå ruta kring inloggningsrutan på startsidan */
+  border: 2px #87B2D8;
+  outline: #eff5fa solid 10px;
+  margin: auto;  
+  padding: 20px;
+  margin-top: 17px;
+  border-radius: 15px;
+ }
+
+#news { /*Utseende på Nyheterna*/
+  border-radius: 15px;
+  border-style: solid; 
+  border-width: 3px;
+  border-color: #eff5fa
+} 
+
+#news {box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;} 
+
+
+
+/* --------------------------------------Coverflow-------------------------------------- */
+
+ 
+.auto-grid {
+
+  /*--auto-grid-min-size: 16rem;*/
+
+  /*display: grid;*/
+
+  /*grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));*/
+
+  /*grid-template-columns: fit-content(100%);*/
+
+  /*grid-gap: 1rem;*/
+
+  padding-left: 0px; /*this is necessary*/
+
+}
+
+
+    
+ 
+.flipster { 
+
+  /*overflow-x: visible;*/
+
+}
+
+
+
+#cf_1, #cf_2 {
+
+  /*display: grid;*/
+  /*align-items: center;*/
+  /*width: 850px;*/
+  /* width: 1200px;*/
+  /* background-color: pink; */
+  /*max-width: 100%;*/
+  overflow-x: visible;
+  /*overflow-y: visible;*/
+  /*min-height: 900px;*/ /*keep content from jumping on larger screens*/
+
+}
+
+ 
+
+ 
+
+#cf_1 > div > ul, #cf_2 > div > ul {
+
+  /*width: 80%;*/
+  /*margin-left: auto;*/
+  /*margin-right: auto;*/
+  /*height: 900px;*/
+  /*display: flex;*/
+  /*flex-wrap: wrap;*/
+  /*overflow-x: visible;*/
+  /*overflow-y: visible;*/
+  display: grid;
+  flex-wrap: wrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  transform: translateX(0px) !important;
+  justify-content: center !important;
+  height: auto !important;
+  /*min-height: 900px;*/ /*keep content from jumping on larger screens*/
+}
+
+
+li[id^="cf_"][id$=" > div > ul"] {
+
+  display: grid;
+  flex-wrap: wrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox; 
+  transform: translateX(0px) !important; 
+  justify-content: center !important; 
+  height: auto !important; 
+
+} 
+
+ 
+
+
+/*Ställer in storlek och marginaler för varje omslag*/
+
+.flipster__item img {
+  width: 155px;
+  height: 225px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  transform: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+/*Anpassar omslagsbilder efter mobilvy*/
+@media screen and (max-width: 600px) {
+.flipster__item img{
+  width: 120px;
+  height: 190px;
+  }       
+}
+ 
+
+/*Lägger till partilleblå border till omslag när man hovrar över*/
+
+.flipster__item img:hover {
+  border: 5px solid #00549E;
+}
+
+ 
+/*Coverflow title*/
+
+
+h2.cf-title {
+  text-align: center;
+  margin-top: 15px;
+}
+
+ 
+
+div#cf_2 {
+
+  margin-bottom: 10px;
+
+}
+
+ 
+
+/*Coverflow loading*/
+
+div#cf_loading {
+
+  opacity: 0;
+
+ 
+
+}
+
+ 
+div#cf_loading.loading {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  opacity: 1;
+
+  /*transition: opacity 750ms;*/
+
+}
+
+ 
+
+#OpacMainUserBlock {
+
+overflow: hidden;
+
+}
+
+
+/*---------------Slut Coverflow---------------------*/
+
+/* Rullistor med senaste böcker på startsida (OpacMainUserBlock)*/
+
+
+/* Placering rullistor med senaste böcker på startsida*/
+#OpacMainUserBlock {
+    margin-top: 20px;
+  }
+
+#kolumner {
+  border: 5px solid #eff5fa;
+  padding: 25px 0;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  text-align:center;
+  border-radius: 15px;
+}
+
+#kolumn1 {
+  display:inline-block;
+  margin-bottom:20px;
+  margin-right:20px;
+
+}
+
+#kolumn2 {
+ display:inline-block;
+  margin-left:20px;
+}
+
+@media screen and (max-width: 600px) { /*Placerar Rullista 2 snyggt i mobil*/
+#kolumn2{
+    margin-left:-20px;
+  }
+}
+
+
+/* Placering rullistor med senaste böcker på startsida*/
+
+ /*make account/person icon partilleblå */
+i.fa.fa-user.fa-icon-black {
+  color: #00549E;
+}
+
+/* Ändrar Avancerad sök utseende och placering*/
+#searchform > div > div.order-5.col-sm-auto > a {
+  margin-left:10px;
+} 
+
+@media screen and (max-width: 600px) { /*Placerar Avancerad sökning snyggt i mobil*/
+#searchform > div > div.order-5.col-sm-auto > a{
+    display:block;
+    margin-top: 15px;
+    text-align:center;
+    margin-left:-10px;
+  }
+}
+
+#moresearches li:after {
+    content:"";
+}
+/* Ändrar Avancerad sök utseende och placering*/
+
+/* Gör sökknappen lite bredare*/
+#searchsubmit {
+ padding-left:20px;
+ padding-right:20px;
+/* Gör sökknappen lite bredare*/
+}  
+
+#search-facets {
+  border:none;
+}  
+
+</style>
+
+
+
+    <link rel="search" type="application/opensearchdescription+xml" href="https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-search.pl?format=opensearchdescription" title="Search Partille bibliotek">
+    <link rel="unapi-server" type="application/xml" title="unAPI" href="https://bibliotekskatalog.partille.se/cgi-bin/koha/unapi" />
+
+
+<script>
+    var Koha = {};
+    function _(s) { return s } // dummy function for gettext
+</script>
+
+<script src="/opac-tmpl/bootstrap/js/Gettext_21.1111000.js"></script>
+<script src="/opac-tmpl/bootstrap/js/i18n_21.1111000.js"></script>
+
+<script src="/opac-tmpl/bootstrap/lib/modernizr.min_21.1111000.js"></script>
+<link type="text/css" rel="stylesheet" href="/opac-tmpl/bootstrap/lib/font-awesome/css/font-awesome.min_21.1111000.css">
+
+
+
+
+
+<link id='flipster-css' href='/api/v1/contrib/coverflow/static/jquery-flipster/jquery.flipster.min.css' type='text/css' rel='stylesheet' />
+<style>
+    /* CSS for Koha CoverFlow Plugin 
+       This CSS was added automatically by installing the CoverFlow plugin
+       Please do not modify */
+    .coverflow {
+        height:160px;
+        margin-left:25px;
+        width:850px;
+    }
+
+    .coverflow img,.coverflow .item {
+        -moz-border-radius:10px;
+        -moz-box-shadow:0 5px 5px #777;
+        -o-border-radius:10px;
+        -webkit-border-radius:10px;
+        -webkit-box-shadow:0 5px 5px #777;
+        border-radius:10px;
+        box-shadow:0 5px 5px #777;
+        height:100%;
+        width:100%;
+    }
+
+    .itemTitle {
+        padding-top:30px;
+    }
+
+    .coverflow .selectedItem {
+        -moz-box-shadow:0 4px 10px #0071BC;
+        -webkit-box-shadow:0 4px 10px #0071BC;
+        border:1px solid #0071BC;
+        box-shadow:0 4px 10px #0071BC;
+    }
+    /* End of CSS for Koha CoverFlow Plugin */
+</style>
+    
+
+
+<link rel="alternate" type="application/rss+xml" title="Partille bibliotek Search RSS feed" href="https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-search.pl?idx=&q=asdjkfsadkfksadjf&amp;count=&amp;sort_by=acqdate_dsc&amp;format=rss" />
+</head>
+
+
+
+
+
+    
+
+
+    
+
+
+
+
+    
+
+<body ID="results" class="branch-default scrollto" >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button id="scrolltocontent">Skip to main content</button>
+<div id="wrapper">
+    <div id="header-region" class="noprint">
+        <nav class="navbar navbar-expand">
+            <div id="logo">
+            <a class="navbar-brand" href="/cgi-bin/koha/opac-main.pl">
+                
+                    Partille bibliotek
+                
+            </a>
+            </div>
+            
+            <ul id="cart-list-nav" class="navbar-nav">
+                
+                <li class="divider-vertical"></li>
+                
+                    <li class="nav-item dropdown">
+                        <a href="/cgi-bin/koha/opac-shelves.pl" title="Show lists" class="nav-link dropdown-toggle" id="listsmenu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                            ><i class="fa fa-list fa-icon-black" aria-hidden="true"></i> <span class="listslabel">Lists</span>
+                        </a>
+                        <div aria-labelledby="listsmenu" role="menu" class="dropdown-menu">
+                            
+                                <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=list&amp;public=1" tabindex="-1" role="menuitem"><strong>Public lists</strong></a>
+                                
+                                
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=274&amp;sortfield=title" tabindex="-1" role="menuitem">Kreativt skrivande</a>
+                                    
+                                    
+                                
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=262&amp;sortfield=title" tabindex="-1" role="menuitem">Förintelsens minnesdag</a>
+                                    
+                                    
+                                
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=263&amp;sortfield=title" tabindex="-1" role="menuitem">Förintelsens minnesdag : barn och ungdom</a>
+                                    
+                                    
+                                
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=264&amp;sortfield=title" tabindex="-1" role="menuitem">Förintelsens minnesdag: skönlitteratur</a>
+                                    
+                                    
+                                
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=257&amp;sortfield=title" tabindex="-1" role="menuitem">Böcker som filmatiserats</a>
+                                    
+                                    
+                                
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=152&amp;sortfield=title" tabindex="-1" role="menuitem">TV-spel Xbox One</a>
+                                    
+                                    
+                                
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=154&amp;sortfield=title" tabindex="-1" role="menuitem">TV-spel övriga format</a>
+                                    
+                                    
+                                
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=153&amp;sortfield=title" tabindex="-1" role="menuitem">TV-spel PS5</a>
+                                    
+                                    
+                                
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=151&amp;sortfield=title" tabindex="-1" role="menuitem">TV-spel PS4</a>
+                                    
+                                    
+                                
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=150&amp;sortfield=title" tabindex="-1" role="menuitem">TV-spel Nintendo Switch</a>
+                                    
+                                    
+                                
+                                    <a class="dropdown-item listmenulink" href="/cgi-bin/koha/opac-shelves.pl?op=list&amp;public=1" tabindex="-1" role="menuitem">View all</a>
+                                
+                            
+                            
+                                <div class="dropdown-divider"></div>
+                            
+                            
+                                <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=list&amp;public=0" tabindex="-1" role="menuitem"><strong>Your lists</strong></a>
+                                
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=add_form" tabindex="-1" role="menuitem">Log in to create your own lists</a>
+                                
+                            
+                        </div> <!-- / .dropdown-menu -->
+                    </li> <!-- / .nav-item.dropdown -->
+                
+            </ul> <!-- / .navbar-nav -->
+
+            
+                
+                    
+
+    <div id="header_langmenu">
+        <ul class="navbar-nav">
+            <li class="dropdown">
+              <a href="#" title="Switch languages" class="nav-link dropdown-toggle" id="langmenu" data-toggle="dropdown" role="button"><i class="fa fa-flag fa-icon-black" aria-hidden="true"></i> <span class="langlabel">Languages</span> <b class="caret"></b></a>
+                <div aria-labelledby="langmenu" role="menu" class="dropdown-menu dropdown-menu-right">
+                    
+                        
+                            
+                                
+                                    
+                                        <a class="dropdown-item" href="/cgi-bin/koha/opac-changelanguage.pl?language=sv-SE"  tabindex="-1" role="menuitem">
+                                            
+                                                Svenska
+                                            
+                                        </a>
+                                    
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                    
+                                        <a class="dropdown-item" href="#" tabindex="-1" class="menu-inactive" role="menuitem">
+                                            
+                                                English
+                                            &nbsp;<i class="fa fa-check" aria-hidden="true"></i>
+                                        </a>
+                                    
+                                
+                            
+                        
+                    
+                </div> <!-- /# .dropdown-menu -->
+            </li> <!-- / .dropdown -->
+        </ul> <!-- /.nav.pull-right -->
+    </div> <!-- /#header_langmenu -->
+
+
+                
+                <ul id="members" class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        
+                            
+                                
+                                    <a href="/cgi-bin/koha/opac-user.pl" class="nav-link login-link loginModal-trigger"><i class="fa fa-user fa-icon-black fa-fw" aria-hidden="true"></i> <span class="userlabel">Log in to your account</span></a>
+                                
+                            
+                        
+
+                        
+                    </li>
+                    
+                        
+                    
+                </ul>
+            
+        </nav> <!-- /navbar -->
+
+        
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        
+    
+        <div id="opacheader">
+            
+                <div class="default_item">
+                    
+                    <div class="default_body"><h1 style="text-align: center;"><a href="https://bibliotekskatalog.partille.se/"><span style="font-size: 30pt;"><span style="color: #283549; font-family: arial, helvetica, sans-serif;">Bibliotekskatalog f&ouml;r Partille bibliotek</span></span></a></h1></div>
+                </div>
+            
+        </div>
+    
+
+                    </div>
+                </div>
+            </div>
+        
+
+    </div> <!-- / header-region -->
+
+    
+        <div class="container-fluid">
+            
+                <div class="row">
+                    <div class="col">
+                            <div id="opac-main-search" class="mastheadsearch">
+                                
+                                    <form name="searchform" method="get" action="/cgi-bin/koha/opac-search.pl" id="searchform">
+                                        <div class="form-row align-items-center">
+                                            <div class="col-sm-auto order-1 order-sm-1">
+                                                <label for="masthead_search"> Search
+                                                    
+                                                        
+                                                    
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-auto order-2 order-sm-2">
+                                                <select name="idx" id="masthead_search" class="form-control">
+                                                    
+                                                        <option value="">Library catalog</option>
+                                                    
+                                                    
+                                                        <option value="ti">Title</option>
+                                                    
+                                                    
+                                                        <option value="au">Author</option>
+                                                    
+                                                    
+                                                        <option value="su">Subject</option>
+                                                    
+                                                    
+                                                        <option value="nb">ISBN</option>
+                                                    
+                                                    
+                                                        <option value="ns">ISSN</option>
+                                                    
+                                                    
+                                                        <option value="se">Series</option>
+                                                    
+                                                    
+                                                        
+                                                            <option value="callnum">Call number</option>
+                                                        
+                                                    
+                                                </select>
+                                            </div> <!-- /.col-sm-auto -->
+
+                                            <div class="col order-4 order-sm-3">
+                                                
+                                                    <input type="text" title="Type search term" class="transl1 form-control" id="translControl1" name="q" value="asdjkfsadkfksadjf" /><span id="translControl"></span>
+                                                
+                                            </div> <!-- /.col -->
+
+                                            
+                                                
+                                                    
+                                                
+                                                <div class="order-5 col-sm-auto">
+                                                    <button type="submit" id="searchsubmit" class="btn btn-primary">Go</button>
+                                                </div>
+                                            
+                                        </div> <!-- /.form-row -->
+                                        <input type="hidden" name="weight_search" value="1">
+                                    </form>
+                                
+                            </div><!-- /#opac-main-search -->
+                    </div> <!-- /.col -->
+                </div> <!-- /.row -->
+            
+
+            <div class="row">
+                <ul class="nav" id="moresearches">
+                    <li class="nav-item">
+                        <a href="/cgi-bin/koha/opac-search.pl">Advanced search</a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                        
+                    
+                    <li class="nav-item">
+                        <a id="library_page" href="/cgi-bin/koha/opac-library.pl">
+                            
+                                Libraries
+                            
+                        </a>
+                    </li>
+                    
+                </ul> <!-- /.nav#moresearches -->
+            </div> <!-- /.row -->
+        </div> <!-- /.container-fluid -->
+    
+
+    <!-- Login form hidden by default, used for modal window -->
+    <div id="loginModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="modalLoginLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalLoginLabel">Log in to your account</h2>
+                    <button type="button" class="closebtn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="/cgi-bin/koha/opac-user.pl" method="post" name="auth" id="modalAuth">
+                    <input type="hidden" name="has-search-query" id="has-search-query" value="" />
+                    <div class="modal-body">
+                        
+                        
+                        
+                            <input type="hidden" name="koha_login_context" value="opac" />
+                            <fieldset class="brief">
+                                <div class="local-login">
+                                    <label for="muserid">Login:</label><input type="text" id="muserid" name="userid" autocomplete="off" />
+                                    <label for="mpassword">Password:</label><input type="password" id="mpassword" name="password" autocomplete="off" />
+                                    <fieldset class="action">
+                                        <input type="submit" class="btn btn-primary" value="Log in" />
+                                    </fieldset>
+                                </div>
+                                
+                                
+                                    <div id="forgotpassword-modal" class="forgotpassword">
+                                        <a href="/cgi-bin/koha/opac-password-recovery.pl">Forgot your password?</a>
+                                    </div>
+                                
+                                
+                                    <div id="patronregistration-modal" class="patronregistration">
+                                        <p>Don't have an account? <a href="/cgi-bin/koha/opac-memberentry.pl">Register here.</a></p>
+                                    </div>
+                                
+                            </fieldset>
+                        
+                    </div>
+                    
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-primary" value="Log in" />
+                        </div>
+                    
+                </form> <!-- /#auth -->
+            </div> <!-- /.modal-content -->
+        </div> <!-- /.modal-dialog -->
+    </div>  <!-- /#modalAuth  -->
+
+
+    <div class="main">
+        <nav id="breadcrumbs" aria-label="Breadcrumb" class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/cgi-bin/koha/opac-main.pl">Home</a>
+                </li>
+                
+                    
+                    <li class="breadcrumb-item active">
+                        
+                            <a href="#" aria-current="page" title="You searched  for 'asdjkfsadkfksadjf'">Results of search for 'asdjkfsadkfksadjf'</a>
+                        
+                    </li>
+                
+            </ol>
+        </nav> <!-- /#breadcrumbs -->
+
+        
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <h1 id="numresults">No results found!</h1>
+                        <p>
+                            
+                                No results found for that in Partille bibliotek catalog.
+                                <a href="https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-search.pl?idx=&q=asdjkfsadkfksadjf&amp;format=rss" aria-label="Subscribe to this search" class="btn btn-link rsssearchlink noprint">
+                                    <i class="fa fa-rss rsssearchicon" aria-hidden="true" title="Subscribe to this search"></i>
+                                </a>
+                            
+                        </p>
+                        
+                        
+                            <div id="noresultsfound">
+                                Logga in på ditt bibliotekskonto om du vill göra ett inköpsförslag.
+                            </div>
+                        
+                    </div> <!-- / .col -->
+                </div> <!-- / .row -->
+            </div> <!-- / .container-fluid -->
+        
+
+        <div class="container-fluid">
+            <div class="row">
+                
+
+                
+                    
+                        <div class="col-lg-10 order-first order-md-first order-lg-2">
+                    
+                
+
+                
+                    
+                
+
+                <div id="userresults">
+                    
+
+                    
+                    
+                    
+
+                    <!-- Search Results Table -->
+                    
+
+                    
+                    
+                    </div> <!-- / #userresults -->
+                </div> <!-- /.span10/12 -->
+            </div> <!-- / .row -->
+        </div> <!-- / .container-fluid -->
+    </div><!-- / .main -->
+
+
+
+
+
+
+
+
+
+
+        
+        
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        
+    
+        <div id="opaccredits">
+            
+                <div class="default_item">
+                    
+                    <div class="default_body"><h2 style="text-align: center;"><span style="color: #2a3448;">Partille bibliotek</span></h2>
+<div style="text-align: center;">Gamla Kronv&auml;gen 56</div>
+<div style="text-align: center;">433 33 Partille</div>
+<div style="text-align: center;">031 - 792 10 10</div>
+<div style="text-align: center;"><a href="mailto:bibliotek@partille.se">bibliotek@partille.se</a></div></div>
+                </div>
+            
+        </div>
+    
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+    </div> <!-- / #wrapper in masthead.inc -->
+
+    
+        
+            
+                
+                    <footer id="changelanguage"  class="noprint">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <span class="navbar-text">Languages:</span>
+                            </li>
+                            
+                                
+                                    
+                                        
+                                            
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="/cgi-bin/koha/opac-changelanguage.pl?language=sv-SE">
+                                                        
+                                                            Svenska
+                                                        
+                                                    </a> <!-- /.nav-link -->
+                                                </li> <!-- /.nav-item -->
+                                            
+                                        
+                                    
+                                
+                            
+                                
+                                    
+                                        
+                                            
+                                                <li class="nav-item">
+                                                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+                                                        
+                                                            English
+                                                        
+                                                    </a> <!-- /.nav-link -->
+                                                </li> <!-- /.nav-item -->
+                                            
+                                        
+                                    
+                                
+                            
+                        </ul> <!-- /.nav -->
+                    </footer> <!-- / #changelanguage -->
+                
+            
+        
+    
+
+
+<!-- JavaScript includes -->
+<script src="/opac-tmpl/bootstrap/lib/jquery/jquery-3.4.1.min_21.1111000.js"></script>
+<script src="/opac-tmpl/bootstrap/lib/jquery/jquery-migrate-3.1.0.min_21.1111000.js"></script>
+<script src="/opac-tmpl/bootstrap/lib/jquery/jquery-ui-1.12.1.min_21.1111000.js"></script>
+<script>
+// Resolve name collision between jQuery UI and Twitter Bootstrap
+$.widget.bridge('uitooltip', $.ui.tooltip);
+</script>
+<script src="/opac-tmpl/bootstrap/lib/bootstrap/js/bootstrap.bundle.min_21.1111000.js"></script>
+<script src="/opac-tmpl/bootstrap/lib/fontfaceobserver.min_21.1111000.js"></script>
+<script src="/opac-tmpl/bootstrap/js/global_21.1111000.js"></script>
+<script>
+    Modernizr.load([
+        // Test need for polyfill
+        {
+            test: window.matchMedia,
+            nope: "/opac-tmpl/bootstrap/lib/media.match.min_21.1111000.js"
+        },
+        // and then load enquire
+        "/opac-tmpl/bootstrap/lib/enquire.min_21.1111000.js",
+        "/opac-tmpl/bootstrap/js/script_21.1111000.js",
+    ]);
+
+    // Fix for datepicker in a modal
+    $.fn.modal.Constructor.prototype.enforceFocus = function () {};
+</script>
+
+<script>
+        var NO_AMAZON_IMAGE = _("No cover image available");
+
+</script>
+<script src="/opac-tmpl/bootstrap/js/amazonimages_21.1111000.js"></script>
+
+
+<script>
+
+    var MSG_CONFIRM_AGAIN = _("Warning: Cannot be undone. Please confirm once again")
+    var MSG_DELETE_SEARCH_HISTORY = _("Are you sure you want to delete your search history?");
+    var MSG_NO_SUGGESTION_SELECTED = _("No suggestion was selected");
+    var MSG_SEARCHING = _("Searching %s...");
+    var MSG_ERROR_SEARCHING_COLLECTION = _("Error searching %s collection");
+    var MSG_NO_RESULTS_FOUND_IN_COLLECTION = _("No results found in the library's %s collection");
+    var MSG_RESULTS_FOUND_IN_COLLECTION = _("Found %s results in the library's %s collection");
+    var MSG_BY = _("by");
+    var MSG_TYPE = _("Type");
+    var MSG_NEXT = _("Next");
+    var MSG_PREVIOUS = _("Previous");
+    var MSG_CHECKOUTS = _("Checkouts");
+    var MSG_NO_CHECKOUTS = _("No checkouts");
+    var MSG_CHECK_OUT = _("Check out");
+    var MSG_CHECK_OUT_CONFIRM = _("Are you sure you want to check out this item?");
+    var MSG_CHECKED_OUT_UNTIL = _("Checked out until %s");
+    var MSG_CHECK_IN = _("Check in");
+    var MSG_CHECK_IN_CONFIRM = _("Are you sure you want to return this item?");
+    var MSG_NO_CHECKOUTS = _("No checkouts");
+    var MSG_DOWNLOAD = _("Download");
+    var MSG_HOLDS = _("Holds");
+    var MSG_NO_HOLDS = _("No holds");
+    var MSG_PLACE_HOLD = _("Place hold");
+    var MSG_CANCEL_HOLD = _("Cancel");
+    var MSG_CANCEL_HOLD_CONFIRM = _("Are you sure you want to cancel this hold?");
+    var MSG_ON_HOLD = _("On hold");
+
+    
+    
+    
+        var query_desc = "asdjkfsadkfksadjf";
+        var querystring = "asdjkfsadkfksadjf";
+        var query_cgi = "idx=&amp;q=asdjkfsadkfksadjf";
+    
+
+    
+        $(window).load(function() {
+            verify_images();
+         });
+    
+    $(".print-large").on("click",function(){
+        window.print();
+        return false;
+    });
+    $(".addtoshelf").on("click",function(e){
+        e.preventDefault();
+        Dopop( this.href );
+    });
+    $("body").on("click", ".addtocart", function(e){
+        e.preventDefault();
+        var biblionumber = $(this).data("biblionumber");
+        addRecord( biblionumber );
+    });
+    $("body").on("click", ".cartRemove", function(e){
+        e.preventDefault();
+        var biblionumber = $(this).data("biblionumber");
+        delSingleRecord( biblionumber );
+    });
+    $(".clearsh").on("click", function(){
+        return confirmDelete(MSG_DELETE_SEARCH_HISTORY);
+    });
+
+</script>
+
+
+    <script src="/opac-tmpl/bootstrap/js/basket_21.1111000.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/opac-tmpl/lib/js-cookie/js.cookie-3.0.1.min_21.1111000.js"></script>
+<script>
+$(document).ready(function() {
+    if($('#searchsubmit').length) {
+        $(document).on("click", '#searchsubmit', function(e) {
+            Cookies.remove("form_serialized", { path: '/'});
+            Cookies.remove("form_serialized_limits", { path: '/'});
+            Cookies.remove("search_path_code", { path: '/'});
+        });
+    }
+});
+</script>
+
+    
+    
+    
+    <script src="/opac-tmpl/bootstrap/js/authtoresults_21.1111000.js"></script>
+    <script src="/opac-tmpl/lib/hc-sticky_21.1111000.js"></script>
+    
+    
+
+    <script>
+        
+            function holdMultiple() {
+                var checkedBiblioNums = ""; // Separated by "/"
+                var checkedCount = 0;
+                if(document.bookbag_form.biblionumber.length > 0) {
+                    for (var i=0; i < document.bookbag_form.biblionumber.length; i++) {
+                        if (document.bookbag_form.biblionumber[i].checked) {
+                            checkedBiblioNums += (document.bookbag_form.biblionumber[i].value + "/");
+                            checkedCount++;
+                        }
+                    }
+                }
+
+                if (checkedCount > 0) {
+                    holdBiblioNums(checkedBiblioNums);
+                } else {
+                    alert( __("No item was selected") );
+                }
+            }
+
+            function holdBiblioNums(numList) {
+                // numList: biblio numbers separated by "/"
+                $("#hold_form_biblios").attr("value", numList);
+                $("#hold_form").submit();
+            }
+        
+
+        
+
+
+        function enableCheckboxActions(){
+            // Enable/disable controls if checkboxes are checked
+            var checkedBoxes = $(".cb:checked");
+            var controls = $(".selections-toolbar .links a, .selections-toolbar .links input, .selections-toolbar .links select, .selections-toolbar .links label, .selections-toolbar .links button");
+            if ($(checkedBoxes).size()) {
+                $(".selections").html(_("With selected titles: "));
+                $(controls).removeClass("disabled");
+            } else {
+                $(".selections").html(_("Select titles to: "));
+                $(controls).addClass("disabled");
+            }
+        }
+
+        
+
+        $(document).ready(function(){
+
+            $(".moretoggle").click(function(e){
+                e.preventDefault();
+                $(this).siblings(".collapsible-facet").toggle();
+                $(this).siblings(".moretoggle").toggle();
+                $(this).toggle();
+            });
+
+            
+
+            $(".cb").click(function(){
+                enableCheckboxActions();
+            });
+            enableCheckboxActions();
+
+            $(".br-readonly a").on("click", function(e){
+                e.preventDefault();
+            });
+
+            $('.resort').change(function() {
+                $('#bookbag_form').submit();
+            });
+
+            $('#results_per_page').change(function() {
+                $('#bookbag_form').submit();
+            });
+
+            
+                
+                    $("#addto").on("change",function(){
+                        cartList();
+                    });
+                    $(".addto").find("input:submit").click(function(){
+                        cartList();
+                        return false;
+                    });
+                
+            
+
+            function cartList(){
+                addtoOption = $("#addto").find("option:selected");
+                addtoval = addtoOption.val();
+                if(addtoval == "addtolist"){
+                    var shelfnumber = addtoOption.attr("id").replace("s","");
+                    if (vShelfAdd()) {
+                        Dopop('/cgi-bin/koha/opac-addbybiblionumber.pl?selectedshelf='+shelfnumber+'&' + vShelfAdd());
+                    }
+                    return false;
+                } else if(addtoval == "newlist"){
+                    
+                        alert(_("You must be logged in to create or add to lists"));
+                    
+                    return false;
+                } else if(addtoval == "morelists"){
+                    
+                        alert(_("You must be logged in to create or add to lists"));
+                    
+                    return false;
+                }
+                if(addtoval == "addtocart" || $("#addto").attr("class") == "addtocart"){
+                    addMultiple();
+                    return false;
+                }
+            }
+            $("#CheckAll").on("click",function(e){
+                e.preventDefault();
+                $(".cb").prop("checked", true);
+                enableCheckboxActions();
+            });
+            $("#CheckNone").on("click",function(e){
+                e.preventDefault();
+                $(".cb").prop("checked", false);
+                enableCheckboxActions();
+            });
+
+            $(".hold").on("click", function(e){
+                e.preventDefault();
+                holdMultiple();
+            });
+
+            
+                
+                
+                
+                
+            
+
+            
+
+            
+            
+            
+            
+
+            
+
+            $("input.newtag").on('keydown', function(e){
+                if (e.keyCode == 13) { e.preventDefault(); }
+            });
+
+            Sticky = $("#floating");
+            Sticky.hcSticky({
+                stickTo: ".searchresults",
+                stickyClass: "floating"
+            });
+
+        });
+    </script>
+
+
+    <script>
+        //Text på sökknapp
+$("#searchsubmit").text("Sök");
+        
+if ($('li.nav-item a.disabled:contains("English")').length > 0) {
+        $("#searchsubmit").text("Search");}
+//Slut Text på sökknapp
+
+
+
+// Ändrar text på Användaröversikt för Lån och Reservationer
+$('#user_summary_shortcuts > li:nth-child(1) > a').html( function(index,currentcontent) {
+  return currentcontent.replace("utlån", " lån"); // 'lån' istället för 'utlån''
+});
+
+$('#user_summary_shortcuts > li:nth-child(2) > a').html( function(index,currentcontent) {
+  return currentcontent.replace("hold pending", " reservation"); // singularis vid en reservation
+});
+$('#user_summary_shortcuts > li:nth-child(2) > a').html( function(index,currentcontent) {
+  return currentcontent.replace("holds pending", " reservationer"); //plural vid fler reservationer
+});
+// Ändrar text på Användaröversikt för Lån och Reservationer
+
+
+
+//Text vid inloggningsruta
+$(document).ready(function(){
+$("label[for='userid']").html("Bibliotekskortsnummer eller personnummer (10 siffror):");
+$("label[for='password']").html("PIN-kod (4 siffror):");
+  
+	$("#memberentry_password legend").html("PIN-kod");
+	$("#patronregistration-main").html("<p>Saknar du ett bibliotekskonto? <a href=\"/cgi-bin/koha/opac-memberentry.pl\">Skapa ett här</a></p>");
+   
+	$("#password_alert").html("PIN-koden måste vara 4 siffror.");
+	$("#password_alert").next().html("Om du inte anger en PIN-kod skapas en systemgenererat kod.");
+	$("label[for='password2']").html("Bekräfta PIN-kod");
+ 	
+  		if ($('li.nav-item a.disabled:contains("English")').length > 0) {
+       		$("#patronregistration-main").html("<p>Don't have an account? <a href=\"/cgi-bin/koha/opac-			memberentry.pl\">Register here</a></p>"); }
+   		if ($('li.nav-item a.disabled:contains("English")').length > 0) {
+       		$("label[for='password']").html("PIN-code (4 digits):"); }
+    	if ($('li.nav-item a.disabled:contains("English")').length > 0) {
+       		$("label[for='userid']").html("Librarycard number or social security number (10 digits):");}
+  		if ($('li.nav-item a.disabled:contains("English")').length > 0) {
+       		$("label[for='password2']").html("Confirm PIN-code:");}
+
+
+});
+//Slut Text vid inloggningsruta
+
+
+
+
+//Texter Flikar på Användarnas inloggade sidor
+if ($('#navigation').length) {
+  $('#menu a[href="/cgi-bin/koha/opac-user.pl"]').text('Översikt');
+  $('#menu a[href="/cgi-bin/koha/opac-account.pl"]').text('Avgifter');
+  $('#menu a[href="/cgi-bin/koha/opac-memberentry.pl"]').text('Personuppgifter');
+  $('#menu a[href="/cgi-bin/koha/opac-passwd.pl"]').text('Ändra PIN-kod');
+  $('#menu a[href="/cgi-bin/koha/opac-search-history.pl"]').text('Din sökhistorik'); // Flik borttagen i Systeminst.
+  $('#menu a[href="/cgi-bin/koha/opac-readingrecord.pl"]').text('Din lånehistorik');
+  $('#menu a[href="/cgi-bin/koha/opac-privacy.pl"]').text('Din sekretess');
+  $('#menu a[href="/cgi-bin/koha/opac-holdshistory.pl"]').text('Din reservationshistorik');
+  $('#menu a[href="/cgi-bin/koha/opac-suggestions.pl"]').text('Inköpsförslag och fjärrlån');
+  $('#menu a[href="/cgi-bin/koha/opac-messaging.pl"]').text('Meddelanden'); // Flik borttagen i Systeminst.
+  $('#menu a[href="/cgi-bin/koha/opac-shelves.pl?op=list"]').text('Dina listor');
+  $('#menu a[href="/cgi-bin/koha/opac-illrequests.pl"]').text('Aktiva fjärrlånebeställningar'); // Flik bortagen genom script nedan
+  
+    if ($('li.nav-item a.disabled:contains("English")').length > 0 )
+    	$('#menu a[href="/cgi-bin/koha/opac-user.pl"]').text('Overview');
+  	if ($('li.nav-item a.disabled:contains("English")').length > 0 )
+  		$('#menu a[href="/cgi-bin/koha/opac-account.pl"]').text('Fees');
+  	if ($('li.nav-item a.disabled:contains("English")').length > 0 )
+  		$('#menu a[href="/cgi-bin/koha/opac-memberentry.pl"]').text('Personal data');
+  	if ($('li.nav-item a.disabled:contains("English")').length > 0 )
+  		$('#menu a[href="/cgi-bin/koha/opac-passwd.pl"]').text('Change PIN-code');
+  	if ($('li.nav-item a.disabled:contains("English")').length > 0 )
+  		$('#menu a[href="/cgi-bin/koha/opac-search-history.pl"]').text('Your search history'); // Flik borttagen i 						Systeminst.
+  	if ($('li.nav-item a.disabled:contains("English")').length > 0 )
+  		$('#menu a[href="/cgi-bin/koha/opac-readingrecord.pl"]').text('Your loan history');
+  	if ($('li.nav-item a.disabled:contains("English")').length > 0 )
+  		$('#menu a[href="/cgi-bin/koha/opac-privacy.pl"]').text('Your data privacy');
+  	if ($('li.nav-item a.disabled:contains("English")').length > 0 )
+  		$('#menu a[href="/cgi-bin/koha/opac-holdshistory.pl"]').text('Your holds history');
+  	if ($('li.nav-item a.disabled:contains("English")').length > 0 )
+  		$('#menu a[href="/cgi-bin/koha/opac-suggestions.pl"]').text('Purchase suggestions and interlibrary loans');
+  	if ($('li.nav-item a.disabled:contains("English")').length > 0 )
+		$('#menu a[href="/cgi-bin/koha/opac-messaging.pl"]').text('Messages'); // Flik borttagen i Systeminst.
+  	if ($('li.nav-item a.disabled:contains("English")').length > 0 )
+  		$('#menu a[href="/cgi-bin/koha/opac-shelves.pl?op=list"]').text('Your lists');
+  	if ($('li.nav-item a.disabled:contains("English")').length > 0 )
+  		$('#menu a[href="/cgi-bin/koha/opac-illrequests.pl"]').text('Aktiva fjärrlånebeställningar'); // Flik bortagen genom 			script nedan
+  	
+}
+
+
+$('#usersuggestions > p:nth-child(3) > a').html( function(index,currentcontent) {
+  return currentcontent.replace("Nytt inköpsförslag", " Nytt förslag"); // Ändrar text på knapp för Inköpsförslag
+});
+$('#toolbar > a').html( function(index,currentcontent) {
+  return currentcontent.replace("Nytt inköpsförslag", " Nytt förslag"); // Ändrar text på knapp för Inköpsförslag när man redan har ett förslag
+});
+
+$('#usersuggestions > p:nth-child(2)').html( function(index,currentcontent) { // Ändrar text om väntande förslag saknas
+  return currentcontent.replace("Det finns inga väntande inköpsförslag", " Det finns inga väntande förslag"); 
+});
+
+$('#usersuggestions > p:nth-child(3)').html( function(index,currentcontent) {
+  return currentcontent.replace("Fyll i formuläret för att lämna ett inköpsförslag. Biblioteket kommer att underrätta dig via e-post när ditt förslag behandlas.", " Fyll i formuläret för att lämna ett förslag. Biblioteket kommer att underrätta dig via e-post när ditt förslag behandlas. Bibliotekspersonalen tar också beslut om förslaget ska köpas in eller fjärrlånas från ett annat bibliotek."); // Ändrar del av infotext ovan förslagformulär
+});
+
+// Tar bort sökrutan för lagda förslag
+$('#search_suggestions_form > div > label').hide();
+$('#title_filter').hide();
+$('#search_suggestions_form > div > div > button').hide();
+// Slut // Tar bort sökrutan för lagda förslag
+
+
+//Slut på Texter Flikar på Användarnas inloggade sidor
+
+// Döljer onödiga knappar under fliken Översikt
+$(document).ready(function(){
+  $('#checkoutst_wrapper > div > div.table_controls > div.dt-buttons > button.dt-button.buttons-csv.buttons-html5').hide(); // cvs-knapp
+  $('#buttons-ics').hide(); // iCal-knapp
+  $('#checkoutst_wrapper > div > div.table_controls > div.dt-buttons > button.dt-button.buttons-copy.buttons-html5').hide(); // Copy-knapp
+  $('#checkoutst_wrapper > div > div.table_controls > div.dt-buttons > button.dt-button.buttons-print').hide(); // Skriv ut-knapp
+});
+// Slut Döljer onödiga knappar under fliken Översikt
+
+$('#menu a[href="/cgi-bin/koha/opac-illrequests.pl"]').hide(); // Ta bort Flik Aktiva fjärrlånebeställningar 
+$('a[href="/cgi-bin/koha/opac-library.pl"]').hide(); // Tar bort länken Bibliotek under sökrutan
+
+
+
+
+//Ändra länktext på Ändra PIN-kod på OPAC
+$(document).ready(function(){
+$('#forgotpassword-main a[href="/cgi-bin/koha/opac-password-recovery.pl"]').text("Har du glömt din PIN-kod?"); 
+
+	if ($('li.nav-item a.disabled:contains("English")').length > 0) {
+     $('#forgotpassword-main a[href="/cgi-bin/koha/opac-password-recovery.pl"]').text("Forgot your PIN-code?");}
+});
+//Slut Ändra länktext på Ändra PIN-kod på OPAC
+
+
+// Ändrar text i fältet för personnummer vid registrering
+$('#borrower_personnr').attr('placeholder','ååmmddnnnn');
+// Slut Ändrar text i fältet för personnummer vid registrering
+
+
+//Ändra länktext på "Logga in"
+$(document).ready(function(){
+$('#members a span[class="userlabel"]').text("Mina sidor"); 
+   
+  if ($('li.nav-item a.disabled:contains("English")').length > 0) {
+    $('#members a span[class="userlabel"]').text("My account");}
+
+});
+//Slut Ändra länktext på "Logga in"
+
+
+//Dölj "beställ fjärrlån"
+$(document).ready(function(){ 
+$("#ill-new").hide(); 
+});
+//Slut Dölj "beställ fjärrlån"
+
+
+
+// Döljer/ändrar text på sidan för föslag
+$(document).ready(function(){
+$('#usersuggestions h1').text("Dina förslag på inköp eller fjärrlån");
+$('#usersuggestions h2').hide();
+
+
+});
+// Slut Döljer/ändrar text på sidan för föslag
+
+
+
+
+//////////////////////////////////////////////////////////////////
+//KATALOGPOST-UTSEENDE
+
+$("#views #Normalview").hide(); // Döljer normal MARC och ISBD-vy i katalogpost
+$("#views #MARCview").hide(); 	// Döljer MARC  i katalogpost
+$("#views #ISBDview").hide(); 	// Döljer ISBD-vy i katalogpost
+$('#catalogue_detail_biblio div.record span.results_summary.oc').hide(); // Döljer "Annan klassifikation" i katalogposten
+$("#ulactioncontainer #action li:nth-child(3) a").hide(); // Döljer Föreslå för inköp i katalogpost
+$("#ulactioncontainer #action li:nth-child(2) a").hide(); // Döljer skriv ut
+$("#ulactioncontainer #action li:nth-child(4) a").hide(); // Döljer föreslå för inköp
+
+
+$('#furthersearches').html( function(index,currentcontent) {
+  return currentcontent.replace("Fler sökningar", "Sök på andra bibliotek");
+});
+
+$('#syndetics-coverimg > div').hide(); // Döljer text om att omlsagsbild är från syndetics
+
+$("span.results_summary.ddc").hide(); // DDC-klassifikation i detaljer om boken
+
+$('#holdingst > tbody > tr > td.status').css('color','#d51818'); // Ändrar statusen Utlånad till röd
+
+//Flyttar Reservationsknappen och 'Antal reservationer' i katalogposten
+$(document).ready(function(){
+//$('#action > li:nth-child(1) > a').css('padding-top', '30px');
+$('#action > li:nth-child(1) > a').css('padding-left', '0px');
+$('#action > li:nth-child(1) > a').css('padding-bottom', '15px');
+$('#action > li:nth-child(1) > a').css('font-weight','bold');
+$('#action > li:nth-child(1) > a').css('font-size','1.2em');
+$('#action > li:nth-child(1) > a').detach().insertBefore($('#holdingst'));
+$('#bib_holds').css('color','#00549e');
+$('#bib_holds').insertBefore('#holdingst');
+ $('#bib_holds').css('padding-bottom','20px');
+});
+//Slut Flyttar Reservationsknappen och 'Antal reservationer' i katalogposten
+
+$('#tab_descriptions').html( function(index,currentcontent) {
+  return currentcontent.replace("Titelanmärkningar", "Titelbeskrivning ");
+});
+
+//Minimera postinfo i katalogpost-----------------------------------------------------------------------------------
+$(document).ready(function(){
+
+     if($(window).width()){
+      	var authorLength = $('#catalogue_detail_biblio > div.record > span.results_summary.author.h3').length;
+      	authorLength = parseInt(authorLength - 1);
+	
+	//Lägg dragspel på rätt ställe
+      	if(authorLength > -1){
+ 	    	$('#catalogue_detail_biblio > div.record > span.results_summary.author.h3:eq('+authorLength+')').after('<div id="record_accordion"><button id="record_more_info">Visa detaljer ▼</button><div id="record_accordion_content"></div></div>');      
+  			for(var i = (authorLength+1); i < $('span.results_summary').length ; i++){
+        		$('#record_accordion > #record_accordion_content').append($('.results_summary:eq('+i+')'));
+        	}
+        }else{
+        	$('#catalogue_detail_biblio > div.record > h1.title').after('<div id="record_accordion"><button id="record_more_info">Visa detaljer ▼</button><div id="record_accordion_content"></div></div>');      
+  			for(var n = 0; n < $('span.results_summary').length ; n++){
+        		$('#record_accordion > #record_accordion_content').append($('.results_summary:eq('+n+')'));
+        	}
+        }
+      
+	//Stil dragspel
+      	$('#record_accordion_content').css({'display':'none','border':'1px solid rgb(222,226,230)','padding':'10px'});
+      	$('#record_accordion_content.show').css({'display':'block'});
+      	$('#record_more_info').css({'background':'transparent','border':'0', 'color':'#00549E','font-size':'14px','display':'inline-block','margin':'10px 0', 'padding':'0'});
+      	$('#opac-detail h1').css('margin-top', '20px');
+     }
+
+     $(document).on('click', '#record_more_info', function(){
+      
+             $('#record_accordion_content').toggle('show');
+    
+      	     if($('#record_more_info').text() == 'Visa detaljer ▼'){
+                  $('#record_more_info').text('Dölj detaljer ▲');
+             } else {
+                  $('#record_more_info').text('Visa detaljer ▼');
+             }
+     });
+  
+});
+
+//Minimera postinfo i katalogpost-----------------------------------------------------------------------------------
+
+//KATALOGPOST-UTSEENDE
+/////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//SÖKRESULTAT-UTSEENDE
+
+$('#wrapper > div.main > div:nth-child(2) > div > div > p').hide(); // Döljer text och RSS-symbol vid inga träffar vid sökning
+$('#numresults > a').hide(); // Döljer RSS-symbol vid sökresultat
+$('#usershelves > h1 > a > i').hide(); // Döljer RSS-symbol vid Listtitlar
+$('span.results_summary.publisher > span.label').text('Förlag: '); // Ändrar till "Förlag" i sökresultat och katalogpost
+$('span.results_summary.rda264 > span.label').text('Förlag: '); // Ändrar "Förläggare" till "Förlag" i sökresultat och katalogpost
+$('span.results_summary.uniform_titles > span.label').text('Originaltitel: '); // Ändrar Uniforma titlat till Originaltitel
+$('[class="title_resp_stmt"]').hide(); // Tar bort info om författare och översättare efter titel i träfflista
+$('span.results_summary.availability > span.label').hide(); // Döljer Rubriken "Tillgänglighet" i sökresultat
+$('span.author').css('font-weight','bold'); // Författare får fet typsnitt
+$('span.author').css('color','SteelBlue'); // Författare får blå text
+$('#results_per_page > option:nth-child(1)').text("50"); // ändrar text för standardantal för Resultat per sida
+  
+
+
+//Lägger till förslag på inköp/fjärrlån vid noll resultat
+$(document).ready(function(){
+
+	$("#userresults .suggestion li:eq(0)").replaceWith('<li><a href="/cgi-bin/koha/opac-suggestions.pl">Inköpsförslag och fjärrlån</a></li>');
+  	$("#userresults .suggestion li:eq(0)").css("list-style", "none");
+  	$("#userresults .suggestion li:eq(1)").hide();//Dölj "Gör fjärrlånebeställning" vid noll sökresultat 
+});
+//Slut lägger till förslag på inköp/fjärrlån vid noll resultat
+
+
+
+/// Ändring av Tillgängliga och Utlånade i RESULTATLISTA
+$(document).ready(function(){
+	$('#results span.unavailable > span.AvailabilityLabel').text('Exemplar utlånade: ');
+  	$('#results span.unavailable > span.AvailabilityLabel').css('font-weight', 'bold');
+  	
+  	$('#results span.available > span.AvailabilityLabel').text("Exemplar tillgängliga: ");
+    $('#results span.available > span.AvailabilityLabel').css('font-weight', 'bold');
+
+    	
+  		$('#results span.available > span.CallNumberAndLabel').hide();
+    	$('#results span.available > span.ItemBranch').hide();
+  
+
+  
+        $('#results span.unavailable > span.ItemSummary.unavailable > span > span').hide(); 
+       	$('#results span.unavailable > span.unavailable_Waiting').hide();   	
+});
+/// Slut ändring av Tillgängliga och Utlånade i RESULTATLISTA
+
+/// Ändring av Tillgängliga och Utlånade i OFFENTLIGA LISTOR (Skriver över Resultatlistan/#results pga högre i hierearkin)
+$(document).ready(function(){
+	$('span.unavailable > span.AvailabilityLabel').text(' Exemplar utlånade ');
+  	$('span.unavailable > span.AvailabilityLabel').css('font-weight', 'bold');
+  	
+  	$('span.available > span.AvailabilityLabel').text("Exemplar tillgängliga ");
+    $('span.available > span.AvailabilityLabel').css('font-weight', 'bold');
+
+    	
+  		$('span.available > span.CallNumberAndLabel').hide();
+    	$('span.available > span.ItemBranch').hide();
+  
+
+  
+        $('span.unavailable > span.ItemSummary.unavailable > span > span').hide(); 
+       	$('span.unavailable > span.unavailable_Waiting').hide();   	
+});
+/// Slut ändring av Tillgängliga och Utlånade i OFFENTLIGA LISTOR
+
+
+// Ta bort " / " och " : " i slutet på typ alla titlar i träfflista, katalogpost och utlåningstabell
+// ( Kompatibel med 19.05 ) ( Verkar funka på 21.11 också) // EJ OPTIMERAD, vet ej hur göra /alex
+
+  if ($('.searchresults, #catalogue_detail_biblio, #checkoutst').length) {
+    $('.title, .title_medium').each(function() { 
+      if ($(this).contents().not($(this).children()).text().slice(-2).indexOf('/') > -2 | $(this).contents().not($(this).children()).text().slice(-3).indexOf('/') > -1) {
+        $(this).html(function() {
+           return $(this).html().replace('/ ','');
+        });
+      } else if ($(this).contents().not($(this).children()).text().slice(-2).indexOf(':') > -2 | $(this).contents().not($(this).children()).text().slice(-3).indexOf(':') > -1) {
+        $(this).html(function() {
+           return $(this).html().replace(': ','');
+        });
+      }
+    });
+  }
+// Slut Ta bort " / " och " : " i slutet på titel i träfflista, katalogpost och utlåningstabell
+
+//Ändrar utseende på facett-menyn
+$('#facet-availability' +
+', #facet-authors' + 
+', #facet-collections'  +
+',#facet-holding-libraries' + 
+',#facet-itemtypes' + 
+',#facet-locations' + 
+',#facet-series' + 
+',#facet-places' + 
+',#facet-topics' +
+',#facet-languages')
+.css('font-weight','bold') // Filtreringsrubriker blir fetstil
+.css('font-size','100%') // Filtreringsrubriker får större text
+.css('margin-top', '10px') // Lägger till padding ovanför faceett
+.css('margin-bottom', '0.5px'); // Drar rubrik närmare filtreringsfacetter
+
+$('#ln_id').detach().insertBefore($('#author_id')); // Sätter språkfiltreringen högst upp bland facetter
+$('#ccode_id').detach().insertBefore($('#location_id')); // Sätter Avdelning ovanför Placering
+$('#holdingbranch_id').hide(); // Döljer facett "Nuvarande plats"
+$('[class="moretoggle"]').css('font-style', 'italic'); // Gör Visa mer och Visa mindre  i kursiv stil
+
+// Slut ändrar utseende på facettmenyn
+
+
+
+$('#sort_by').css('margin-bottom', '10px'); // Ökar mellanrum mellan relevans-rulllistan och resultat per sida (Önskvärt är att sätta dessa rullistor bredvid varandra istället för ovanför varandra
+
+
+//SLUT SÖKRESULTAT-UTSEENDE
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+
+$("#listsmenu span").text("Listor med boktips"); // Ändrar texten för listor i övre vänstra hörnet
+
+
+
+$('#add_suggestion_form fieldset.rows ol li:nth-child(1) span').css('color', 'red'); // Röd text på "obligatoriskt" fält vid inköpsförslag
+
+$('#memberentry-form > div:nth-child(5) > div > fieldset > ol > li > div').css('color', '#c00'); // Röd text på "obligatoriskt" fält vid GDPR vid registrering
+
+$('#memberentry-form > div:nth-child(4) > div > fieldset > ol > li:nth-child(2) > a').hide(); //Döljer "Rensa-knappen" vid GDPR-fältet vid registrering
+
+$('#memberentry-form > div:nth-child(4) > div > fieldset > ol > li:nth-child(2) > div').css('color', 'red'); // Röd text på "obligatoriskt" fält vid GDPR vid regsitrering
+
+
+$('#rssnews-container').hide(); // Döljer RSS-symbol vid nyheterna
+
+
+$('#user_summary > h2').text('Låntagarsammanfattning'); // Ändrar text på sammanfattningen vid inloggat läge
+
+// Döljer sökfilter i rulllista vid sökruta
+$('#masthead_search option:nth-child(5)').hide(); // Döljer ISBN (går söka via "Bibliotekskatalog")
+$('#masthead_search option:nth-child(6)').hide(); // Döljer ISSN
+$('#masthead_search option:nth-child(8)').hide(); // Döljer Hyllsignum
+// Slut Döljer sökfilter i rulllista vid sökruta
+
+
+
+// Döljer överflödig info/knapp och ändrar texter när man trycker på "Mina sidor"
+$(document).ready(function(){ 
+	$("#forgotpassword-modal").hide();
+	$("#patronregistration-modal").hide();
+  	$("#modalAuth > div.modal-footer").hide();
+	});
+
+$('#modalAuth div.modal-body fieldset div.local-login label:nth-child(1)').text("Bibliotekskortsnummer eller personnummer (10 siffror):");
+$('#modalAuth div.modal-body fieldset div.local-login label:nth-child(3)').text("PIN-kod (4 siffror):");
+
+        if ($('li.nav-item a.disabled:contains("English")').length > 0) 
+        $('#modalAuth div.modal-body fieldset div.local-login label:nth-child(1)').text("Librarycard number or social security number (10 digits):");
+		if ($('li.nav-item a.disabled:contains("English")').length > 0)
+		$('#modalAuth div.modal-body fieldset div.local-login label:nth-child(3)').text("PIN-code (4 digits):");
+// Slut Döljer överflödig info och knapp när man trycker på "Mina sidor"
+
+
+
+
+
+// Rullista språk vid sökruta  // Avaktiverat (behövs det när språkfacett finns? 27/4 2023)
+
+//// if ($('#opac-main-search').length) {
+    
+//// $('<div class="col-sm-auto order-2 order-sm-2"><select id="language-limit" name="limit" style="margin-left:3px;" class="form-control"><option value="">Alla språk</option><option value="ln,rtrn:alb">Albanska</option><option value="ln,rtrn:ara">Arabiska</option><option value="ln,rtrn:bos">Bosniska</option><option value="ln,rtrn:dan">Danska</option><option value="ln,rtrn:eng">Engelska</option><option value="ln,rtrn:fin">Finska</option><option value="ln,rtrn:fre">Franska</option><option value="ln,rtrn:heb">Hebreiska</option><option value="ln,rtrn:ita">Italienska</option><option value="ln,rtrn:yid">Jiddisch</option><option value="ln,rtrn:hrv">Kroatiska</option><option value="ln,rtrn:chi">Kinesiska</option><option value="ln,rtrn:9mk">Meänkieli</option><option value="ln,rtrn:nob">Norskt bokmål</option><option value="ln,rtrn:nno">Nynorsk</option><option value="ln,rtrn:per">Persiska</option><option value="ln,rtrn:pol">Polska</option><option value="ln,rtrn:prs">Dari</option><option value="ln,rtrn:por">Portugisiska</option><option value="ln,rtrn:rom">Romani</option><option value="ln,rtrn:rum">Rumänska</option><option value="ln,rtrn:rus">Ryska</option><option value="ln,rtrn:smi OR ln,rtrn:sme OR ln,rtrn:smn OR ln,rtrn:smj OR ln,rtrn:sms OR ln,rtrn:sma">Samiska</option><option value="ln,rtrn:srp">Serbiska</option><option value="ln,rtrn:slo">Slovakiska</option><option value="ln,rtrn:slv">Slovenska</option><option value="ln,rtrn:som">Somaliska</option><option value="ln,rtrn:spa">Spanska</option><option value="ln,rtrn:swe">Svenska</option><option value="ln,rtrn:tha">Thailändska</option><option value="ln,rtrn:tgl">Tagalog </option><option value="ln,rtrn:tir">Tigriska</option><option value="ln,rtrn:tur">Turkiska</option><option value="ln,rtrn:ger">Tyska</option><option value="ln,rtrn:urd">Urdu</option></select></div>').insertAfter($("#translControl1").parent());
+    
+/////  }
+
+// Slut Rullista språk vid sökruta
+
+$("#memberentry-form > div:nth-child(5) > div > fieldset > ol > li > a").hide(); // Döljer "Rensa" vid GDPR-rillista vid självregistrering
+
+
+
+// Ändrar text i fliken Sekretess
+$(document).ready(function(){ 
+$("#opac-privacy-options-list li.privacy0").text("För alltid: Spara min lånehistorik för alltid. Detta är valet för den låntagare som vill kunna se sin lånehistorik vid inloggat läge. Observera att bibliotekarierna kan se din lånehistorik om du väljer detta alternativ."); 
+$("#opac-privacy-options-list li.privacy1").text("Standard: Spara min lånehistorik i tre dagar efter att materialet är återlämnat."); 
+$("#opac-privacy-options-list li.privacy2").text("Aldrig: Spara aldrig min lånehistorik. När man skapar ett bibliotekskonto på Partille bibliotek är det här det förinställda alternativet."); 
+
+
+ 	if ($('li.nav-item a.disabled:contains("English")').length > 0) {
+       $("#opac-privacy-options-list li.privacy0").text("Forever: Keep my checkout history without limit. This is the option for users who want to see their checkout history when logged in.");  }
+  	if ($('li.nav-item a.disabled:contains("English")').length > 0) {
+	$("#opac-privacy-options-list li.privacy1").text("Default: Keep my checkout history for three days after the material is checked in.");   }
+  	if ($('li.nav-item a.disabled:contains("English")').length > 0) {
+	$("#opac-privacy-options-list li.privacy2").text("Never: Delete my checkout history immediately. This is the pre-set option when you create an library account at Partille library.");    }
+});
+
+$(document).ready(function(){ 
+$("#opac-privacy-delete-form p").text("Oavsett vilken vilken sekretessregel du väljer kan du radera din utlåningshistorik genom att trycka på knappen nedan. OBSERVERA! När du har bekräftat borttagningen går det inte återskapa informationen."); 
+
+
+ if ($('li.nav-item a.disabled:contains("English")').length > 0) {
+      $("#opac-privacy-delete-form p").text("Whatever privacy rule you choose, you can delete all your checkout history immediately by clicking here. BE CAREFUL! Once you've confirmed the deletion, it's not possible to retrieve the information!");   }
+});
+// Slut ändrar text vid fliken sekretess
+
+
+
+
+//Ersätt text Återställ lösenord
+$(document).ready(function(){
+  $('#userpasswd > h1').text('Ändra din PIN-kod');
+  $('#mainform > fieldset:nth-child(2) > div.alert.alert-info').text('Din pinkod ska bestå av fyra siffror');
+  $('#mainform > fieldset:nth-child(2) > div:nth-child(2) > label').text('Nuvarande pinkod: ');
+  $('#mainform > fieldset:nth-child(2) > div:nth-child(3) > label').text( 'Ny pinkod:' );
+  $('#mainform > fieldset:nth-child(2) > div:nth-child(4) > label').text( 'Bekräfta pinkod:' );
+  
+$('#mainform > fieldset.action').html( function(index,currentcontent) {
+  return currentcontent.replace("Ändra ditt lösenord", "Ändra din PIN-kod"); // Ändrar text på knappen
+	});
+});
+//Slut ersätt text Återställ lösenord
+
+
+
+//Ändrar ord på meningen "Din sökning returnerade X resultat." vid sökträff
+$('#numresults').html( function(index,currentcontent) {
+  return currentcontent.replace("returnerade", "gav").replace("resultat", "träffar");
+});
+
+$('#numresults').html( function(index,currentcontent) {
+  return currentcontent.replace("Inga träffar hittades!", "Din sökning gav inga träffar!");
+});
+//Slut Ändrar ord på meningen "Din sökning returnerade X resultat." vid sökträff
+
+
+// Byter plats på fält för Förnamn-och efternamn i formulär vid registrering.
+$('#memberentry_identity li input#borrower_surname').parent().detach().insertAfter($('#memberentry_identity li input#borrower_firstname').parent());
+// Slut Byter plats på fält för Förnamn-och efternamn i formulär vid registrering.
+
+//Ändrar ord på meningen "Skriven den [datum]" under meddelande till låntagaren
+$('#userdetails > div:nth-child(2) > ul > li > em').html( function(index,currentcontent) {
+  return currentcontent.replace("Skriven", "Publicerat").replace("den", "");
+});
+//SLUT Ändrar ord på meningen "Skriven den [datum]" under meddelande till låntagaren
+
+
+//Utseende Nyheter 
+$('#news > div.newsitem > div.newsfooter').html( function(index,currentcontent) {
+  return currentcontent.replace("Publicerad den", "Publicerat");
+});
+$('#news > div.newsitem > div.newsfooter').css("text-align", "right");
+//Utseende Nyheter 
+
+
+//<----Coverflow----->//
+
+
+//Timeout används så att skriptet körs med 2,0 sekund fördröjning, så att CoverFlow har tid att ladda
+
+setTimeout(function () {
+//Loopar igenom varje bild i snurran
+$('div.flipster__item__content > a > img').each(function(){
+var myIndex = $('div.flipster__item__content > a > img').index(this); 
+//Om bilden är "No image"...
+if($('div.flipster__item__content > a > img:eq('+myIndex+')').attr('src') == 'https://raw.githubusercontent.com/bywatersolutions/web-assets/master/NoImage.png'){
+        $('div.flipster__item__content:eq('+myIndex+')').remove();//...ta bort boken helt ur snurran
+}
+});
+}, 2000);
+
+
+//<----Coverflow----->//
+
+//Flyttar Avancerad sökning till sökrutfältet och döljer div.row under sökrutan//
+$('#moresearches > li:nth-child(1) > a').detach().insertAfter($('#searchsubmit'));
+$("#wrapper > div:nth-child(2) > div:nth-child(2").hide();
+//Flyttar Avancerad sökning till sökrutfältet och döljer div.row under sökrutan//
+
+
+
+// ÄNDRAR TEXT PÅ FORMULÄR FÖR ÅTERSTÄLLNING AV PINKOD //
+$('#password-recovery > form > fieldset > div:nth-child(1) > label').text("Bibliotekskortsnummer eller personnummer (10 siffror):");
+
+$('#wrapper > div.main > div > div > div.col-6.order-first.order-md-first.order-lg-2.maincontent > h1').text("Återställning av glömd PIN-kod");
+
+$('#password-recovery > form > p').html( function(index,currentcontent) { 
+  return currentcontent.replace("För att återställa ditt lösenord, ange ditt användarnamn eller din e-postadress.", " För att återställa din PIN-kod anger du ditt bibliotekskortsnummer/personnummer (10 siffror) eller din e-postadress."); 
+});
+// SLUT ÄNDRAR TEXT FÖR FORMULÄR FÖR ÅTERSTÄLLNING AV PINKOD //
+
+
+
+    </script>
+
+
+
+        <script src="/api/v1/contrib/coverflow/static/jquery-flipster/jquery.flipster.min.js"></script>
+        <script>$(document).ready(function(){$('#cf_1').load("/api/v1/contrib/coverflow/reports/95",function(){$('.koha-coverflow img').on("load",function(){if(this.naturalHeight==1){$(this).attr("src","https://raw.githubusercontent.com/bywatersolutions/web-assets/master/NoImage.png");}});var opt={'items':'.item','minfactor':15,'distribution':1.5,'scalethreshold':0,'staticbelowthreshold':false,'titleclass':'itemTitle','selectedclass':'selectedItem','scrollactive':true,'step':{'limit':4,'width':10,'scale':true}};$('#cf_1').flipster({autoplay:'',click:'',loop:'',scrollwheel:'',spacing:'0',style:'grid',touch:'',});});$('#cf_2').load("/api/v1/contrib/coverflow/reports/105",function(){$('.koha-coverflow img').on("load",function(){if(this.naturalHeight==1){$(this).attr("src","https://raw.githubusercontent.com/bywatersolutions/web-assets/master/NoImage.png");}});var opt={'items':'.item','minfactor':15,'distribution':1.5,'scalethreshold':0,'staticbelowthreshold':false,'titleclass':'itemTitle','selectedclass':'selectedItem','scrollactive':true,'step':{'limit':4,'width':10,'scale':true}};$('#cf_2').flipster({autoplay:'',click:'',loop:'',scrollwheel:'',spacing:'0',style:'grid',touch:'',});});});
+</script>
+    
+
+</body>
+</html>
+
+
