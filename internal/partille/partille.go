@@ -247,14 +247,25 @@ func (s *Storage) RefreshBookAvailabilities(poller BookAvailabilityPoller) error
 		return fmt.Errorf("refreshbookavailabilities: failed to query db: %w", err)
 	}
 
+	defer rows.Close()
+
 	queries := make([]BookQuery, 0)
 	for rows.Next() {
 		query := BookQuery{}
 		err := rows.Scan(query.Id, query.Title, query.Author)
-		queries = append(queries, query)
 		if err != nil {
 			return fmt.Errorf("refreshbookavailabilities: failed to scan row: %w", err)
 		}
+		queries = append(queries, query)
+	}
+
+	if err := rows.Err(); err != nil {
+		return fmt.Errorf("refreshbookavailabilities: failed to iterate rows: %w", err)
+	}
+
+	if len(queries) == 0 {
+		fmt.Println("refreshbookavailabilities: no rows to update, either all are up to date or there are no books in the db")
+		return nil
 	}
 
 	now := time.Now().UTC().Format(time.RFC3339)
