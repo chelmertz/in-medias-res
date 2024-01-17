@@ -208,17 +208,26 @@ type PartilleBibliotekBook struct {
 // PollPartilleBibliotek returns a book from the Partille Bibliotek,
 // which you should match against the book you're looking for, probably
 // coming from Goodreads
-func PollPartilleBibliotek(searchTerm string) (*PartilleBibliotekBook, error) {
-	pbUrl := "https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-search.pl?idx=&sort_by=popularity_dsc&weight_search=1"
+func PollPartilleBibliotek(author, title string) (*PartilleBibliotekBook, error) {
+	pbUrl := "https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-search.pl?advsearch=1&idx=au%2Cwrdl&q=raymond+chandler&op=AND&idx=ti&q=the+big+sleep&weight_search=on&sort_by=popularity_dsc&do=Search"
 	searchUrl, err := url.Parse(pbUrl)
 	if err != nil {
 		// this must never happen, so we panic
 		panic(err)
 	}
 	query := searchUrl.Query()
-	query.Set("q", searchTerm)
+	query.Set("advsearch", "1")
+	query.Add("idx", "au,wrdl")
+	query.Add("q", author)
+	query.Set("op", "AND")
+	query.Add("idx", "ti")
+	query.Add("q", title)
+	query.Set("weight_search", "on")
+	query.Set("sort_by", "popularity_dsc")
+	query.Set("sort_by", "popularity_dsc")
 
 	searchUrl.RawQuery = query.Encode()
+	fmt.Println("got this as a query", searchUrl.RawQuery)
 
 	// let's assume our result is on the first page, or not there at all
 	resp, err := http.Get(searchUrl.String())

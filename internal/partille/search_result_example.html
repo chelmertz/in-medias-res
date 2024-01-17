@@ -22,7 +22,7 @@
 <title>
 
     
-        Results of search for 'the big sleep raymond chandler'
+        Search results
     
 
 &rsaquo;
@@ -36,7 +36,7 @@ Partille bibliotek catalog
 
 <link rel="shortcut icon" href="/opac-tmpl/bootstrap/images/favicon.ico" type="image/x-icon" />
 
-    <link rel="stylesheet" href="/opac-tmpl/bootstrap/lib/jquery/jquery-ui-1.12.1.min_21.1111000.css" type="text/css">
+    <link type="text/css" href="/opac-tmpl/bootstrap/lib/jquery/jquery-ui-1.12.1.min_21.1111000.css" rel="stylesheet">
 
 
     
@@ -44,12 +44,12 @@ Partille bibliotek catalog
     
 
 
-    <link type="text/css" rel="stylesheet" href="/opac-tmpl/bootstrap/css/opac_21.1111000.css">
+    <link rel="stylesheet" href="/opac-tmpl/bootstrap/css/opac_21.1111000.css" type="text/css">
 
 
 
 
-    <link media="print" href="/opac-tmpl/bootstrap/css/print_21.1111000.css" rel="stylesheet" type="text/css">
+    <link media="print" rel="stylesheet" type="text/css" href="/opac-tmpl/bootstrap/css/print_21.1111000.css">
 
 
     <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
@@ -601,7 +601,7 @@ i.fa.fa-user.fa-icon-black {
     
 
 
-<link rel="alternate" type="application/rss+xml" title="Partille bibliotek Search RSS feed" href="https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;count=50&amp;sort_by=acqdate_dsc&amp;format=rss" />
+<link rel="alternate" type="application/rss+xml" title="Partille bibliotek Search RSS feed" href="https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;count=50&amp;sort_by=acqdate_dsc&amp;format=rss" />
 </head>
 
 
@@ -659,11 +659,11 @@ i.fa.fa-user.fa-icon-black {
                                 <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=list&amp;public=1" tabindex="-1" role="menuitem"><strong>Public lists</strong></a>
                                 
                                 
-                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=274&amp;sortfield=title" tabindex="-1" role="menuitem">Kreativt skrivande</a>
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=262&amp;sortfield=title" tabindex="-1" role="menuitem">Förintelsens minnesdag</a>
                                     
                                     
                                 
-                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=262&amp;sortfield=title" tabindex="-1" role="menuitem">Förintelsens minnesdag</a>
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=274&amp;sortfield=title" tabindex="-1" role="menuitem">Kreativt skrivande</a>
                                     
                                     
                                 
@@ -852,7 +852,7 @@ i.fa.fa-user.fa-icon-black {
 
                                             <div class="col order-4 order-sm-3">
                                                 
-                                                    <input type="text" title="Type search term" class="transl1 form-control" id="translControl1" name="q" value="the big sleep raymond chandler" /><span id="translControl"></span>
+                                                    <input type="text" title="Type search term" class="transl1 form-control" id="translControl1" name="q" /><span id="translControl"></span>
                                                 
                                             </div> <!-- /.col -->
 
@@ -960,9 +960,13 @@ i.fa.fa-user.fa-icon-black {
                 </li>
                 
                     
+                        <li class="breadcrumb-item">
+                            <a href="/cgi-bin/koha/opac-search.pl?expanded_options=1&returntosearch=1">Advanced search</a>
+                        </li>
+                    
                     <li class="breadcrumb-item active">
                         
-                            <a href="#" aria-current="page" title="You searched  for 'the big sleep raymond chandler'">Results of search for 'the big sleep raymond chandler'</a>
+                            <a href="#" aria-current="page" title="You searched  for '(author:(raymond* chandler*)) AND (title:(the* big* sleep*))'">Search results</a>
                         
                     </li>
                 
@@ -988,7 +992,7 @@ i.fa.fa-user.fa-icon-black {
                 <ul>
                     <li>
                         
-                            <a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;limit=available">Limit to currently available items</a>
+                            <a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;limit=available">Limit to currently available items</a>
                         
                     </li>
                 </ul>
@@ -1027,7 +1031,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=author:Chandler,%20Raymond" title="Chandler, Raymond (2)">Chandler, Raymond</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=author:Chandler,%20Raymond" title="Chandler, Raymond (2)">Chandler, Raymond</a></span>
                                     
                                       <span class="facet-count"> (2)</span>
                                     
@@ -1041,7 +1045,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=author:Edlund,%20M%C3%A5rten" title="Edlund, Mårten (1)">Edlund, Mårten</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=author:Edlund,%20M%C3%A5rten" title="Edlund, Mårten (1)">Edlund, Mårten</a></span>
                                     
                                       <span class="facet-count"> (1)</span>
                                     
@@ -1055,7 +1059,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=author:Mattson,%20Per" title="Mattson, Per (1)">Mattson, Per</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=author:Mattson,%20Per" title="Mattson, Per (1)">Mattson, Per</a></span>
                                     
                                       <span class="facet-count"> (1)</span>
                                     
@@ -1098,7 +1102,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=itype:BOK" title="BOK (1)">Bok</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=itype:BOK" title="BOK (1)">Bok</a></span>
                                     
                                       <span class="facet-count"> (1)</span>
                                     
@@ -1112,7 +1116,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=itype:LCD" title="LCD (1)">Ljudbok, CD</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=itype:LCD" title="LCD (1)">Ljudbok, CD</a></span>
                                     
                                       <span class="facet-count"> (1)</span>
                                     
@@ -1155,7 +1159,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=location:DEC" title="DEC (1)">Deckare</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=location:DEC" title="DEC (1)">Deckare</a></span>
                                     
                                       <span class="facet-count"> (1)</span>
                                     
@@ -1169,7 +1173,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=location:LCD" title="LCD (1)">Ljudböcker</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=location:LCD" title="LCD (1)">Ljudböcker</a></span>
                                     
                                       <span class="facet-count"> (1)</span>
                                     
@@ -1214,7 +1218,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=title-series:Philip%20Marlowe" title="Philip Marlowe (1)">Philip Marlowe</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=title-series:Philip%20Marlowe" title="Philip Marlowe (1)">Philip Marlowe</a></span>
                                     
                                       <span class="facet-count"> (1)</span>
                                     
@@ -1257,7 +1261,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=subject:Los%20Angeles" title="Los Angeles (1)">Los Angeles</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=subject:Los%20Angeles" title="Los Angeles (1)">Los Angeles</a></span>
                                     
                                       <span class="facet-count"> (1)</span>
                                     
@@ -1271,7 +1275,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=subject:Philip%20Marlowe" title="Philip Marlowe (1)">Philip Marlowe</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=subject:Philip%20Marlowe" title="Philip Marlowe (1)">Philip Marlowe</a></span>
                                     
                                       <span class="facet-count"> (1)</span>
                                     
@@ -1285,7 +1289,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=subject:USA." title="USA. (1)">USA.</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=subject:USA." title="USA. (1)">USA.</a></span>
                                     
                                       <span class="facet-count"> (1)</span>
                                     
@@ -1328,7 +1332,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=ccode:PAB" title="PAB (1)">Nedre plan</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=ccode:PAB" title="PAB (1)">Nedre plan</a></span>
                                     
                                       <span class="facet-count"> (1)</span>
                                     
@@ -1342,7 +1346,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=ccode:PABF" title="PABF (1)">Skönlitteratur</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=ccode:PABF" title="PABF (1)">Skönlitteratur</a></span>
                                     
                                       <span class="facet-count"> (1)</span>
                                     
@@ -1385,7 +1389,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=holdingbranch:PAB" title="PAB (2)">Partille bibliotek</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=holdingbranch:PAB" title="PAB (2)">Partille bibliotek</a></span>
                                     
                                       <span class="facet-count"> (2)</span>
                                     
@@ -1428,7 +1432,7 @@ i.fa.fa-user.fa-icon-black {
                             
                                   
                                     
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;sort_by=popularity_dsc&amp;count=20&limit=ln:swe" title="swe (2)">Swedish</a></span>
+                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=ln:swe" title="swe (2)">Swedish</a></span>
                                     
                                       <span class="facet-count"> (2)</span>
                                     
@@ -1461,7 +1465,7 @@ i.fa.fa-user.fa-icon-black {
                     
                         <h1 id="numresults">
                             Your search returned 2 results.
-                            <a href="https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-search.pl?idx=&q=the%20big%20sleep%20raymond%20chandler&amp;format=rss" class="btn btn-link rsssearchlink noprint" aria-label="Subscribe to this search">
+                            <a href="https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;format=rss" class="btn btn-link rsssearchlink noprint" aria-label="Subscribe to this search">
                                 <i class="fa fa-rss rsssearchicon" aria-hidden="true" title="Subscribe to this search"></i>
                             </a>
                         </h1>
@@ -1475,6 +1479,10 @@ i.fa.fa-user.fa-icon-black {
                     
                     
                         
+                            <div class="returntosearch">
+                                <p><a href="/cgi-bin/koha/opac-search.pl?expanded_options=1&returntosearch=1">Return to the last advanced search</a></p>
+                            </div>
+                        
                     
                     
 
@@ -1486,9 +1494,15 @@ i.fa.fa-user.fa-icon-black {
                                 <legend class="sr-only">Sort</legend>
                                 
                                     
-                                        <input type="hidden" name="idx" value=""/>
+                                        <input type="hidden" name="idx" value="au,wrdl"/>
                                     
-                                        <input type="hidden" name="q" value="the big sleep raymond chandler"/>
+                                        <input type="hidden" name="q" value="raymond chandler"/>
+                                    
+                                        <input type="hidden" name="op" value="AND"/>
+                                    
+                                        <input type="hidden" name="idx" value="ti"/>
+                                    
+                                        <input type="hidden" name="q" value="the big sleep"/>
                                     
                                     
                                 
@@ -2021,9 +2035,9 @@ $.widget.bridge('uitooltip', $.ui.tooltip);
     
     
     
-        var query_desc = "the big sleep raymond chandler";
-        var querystring = "the big sleep raymond chandler";
-        var query_cgi = "idx=&amp;q=the%20big%20sleep%20raymond%20chandler";
+        var query_desc = "(author:(raymond* chandler*)) AND (title:(the* big* sleep*))";
+        var querystring = "raymond chandler the big sleep";
+        var query_cgi = "idx=au%2Cwrdl&amp;q=raymond%20chandler&amp;op=AND&amp;idx=ti&amp;q=the%20big%20sleep";
     
 
     
