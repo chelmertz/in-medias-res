@@ -9,6 +9,7 @@ import (
 	"net/url"
 	"os"
 	"path"
+	"regexp"
 	"strconv"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -201,6 +202,7 @@ func (s *Storage) CreateUser(username string) (int, error) {
 type PartilleBibliotekBook struct {
 	Title     string
 	DetailUrl string
+	Available bool
 }
 
 // PollPartilleBibliotek returns a book from the Partille Bibliotek,
@@ -229,10 +231,16 @@ func PollPartilleBibliotek(searchTerm string) (*PartilleBibliotekBook, error) {
 	if err != nil {
 		return nil, fmt.Errorf("pollpartillebibliotek: failed to parse html: %w", err)
 	}
+
 	book := firstResult(node)
+	if book == nil {
+		return nil, fmt.Errorf("no book could be parsed from %s", searchUrl.String())
+	}
 
 	return book, nil
 }
+
+var trailingTitleScrap = regexp.MustCompile(`(\s|/)+$`)
 
 func firstResult(node *html.Node) *PartilleBibliotekBook {
 	book := &PartilleBibliotekBook{}
@@ -240,11 +248,23 @@ func firstResult(node *html.Node) *PartilleBibliotekBook {
 
 	var traverse func(*html.Node)
 	traverse = func(n *html.Node) {
+		isElementWithTitle := false
 		if n.Type == html.ElementNode && n.Data == "a" {
 			for _, attr := range n.Attr {
 				if attr.Key == "class" && attr.Val == "title" {
+					// .title elements represents books
 					foundOne = true
+					isElementWithTitle = true
+					book.Title = n.FirstChild.Data
+					book.Title = trailingTitleScrap.ReplaceAllString(book.Title, "")
+				} else if attr.Key == "href" {
+					book.DetailUrl = attr.Val
+					// the detail url is relative in the DOM
+					book.DetailUrl = "https://bibliotekskatalog.partille.se" + book.DetailUrl
 				}
+			}
+			if !isElementWithTitle {
+				book.DetailUrl = ""
 			}
 		}
 
@@ -255,8 +275,9 @@ func firstResult(node *html.Node) *PartilleBibliotekBook {
 	}
 
 	traverse(node)
-
-	return &PartilleBibliotekBook{
-		Title: "The Hobbit",
+	if !foundOne {
+		return nil
 	}
+
+	return book
 }
