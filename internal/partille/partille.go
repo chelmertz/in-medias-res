@@ -5,16 +5,12 @@ import (
 	"encoding/csv"
 	"fmt"
 	"io"
-	"net/http"
-	"net/url"
 	"os"
 	"path"
-	"regexp"
 	"strconv"
 	"time"
 
 	_ "github.com/mattn/go-sqlite3"
-	"golang.org/x/net/html"
 )
 
 type Storage struct {
@@ -298,93 +294,4 @@ type PollResult struct {
 	Url   string
 	// the consumer must check IsAvailable first (consider it a Maybe/Option)
 	IsAvailable bool
-}
-
-// PollPartilleBibliotek returns a book from the Partille Bibliotek,
-// which you should match against the book you're looking for, probably
-// coming from Goodreads
-func PollPartilleBibliotek(q BookQuery) (*PollResult, error) {
-	pbUrl := "https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-search.pl?advsearch=1&idx=au%2Cwrdl&q=raymond+chandler&op=AND&idx=ti&q=the+big+sleep&weight_search=on&sort_by=popularity_dsc&do=Search"
-	searchUrl, err := url.Parse(pbUrl)
-	if err != nil {
-		// this must never happen, so we panic
-		panic(err)
-	}
-	query := searchUrl.Query()
-	query.Set("advsearch", "1")
-	query.Add("idx", "au,wrdl")
-	query.Add("q", q.Author)
-	query.Set("op", "AND")
-	query.Add("idx", "ti")
-	query.Add("q", q.Title)
-	query.Set("weight_search", "on")
-	query.Set("sort_by", "popularity_dsc")
-	query.Set("sort_by", "popularity_dsc")
-
-	searchUrl.RawQuery = query.Encode()
-	fmt.Println("got this as a query", searchUrl.RawQuery)
-
-	// let's assume our result is on the first page, or not there at all
-	resp, err := http.Get(searchUrl.String())
-	if err != nil {
-		return nil, fmt.Errorf("pollpartillebibliotek: failed to get search page: %w", err)
-	}
-	defer resp.Body.Close()
-
-	node, err := html.Parse(resp.Body)
-	if err != nil {
-		return nil, fmt.Errorf("pollpartillebibliotek: failed to parse html: %w", err)
-	}
-
-	book := firstResult(node)
-	if book == nil {
-		return nil, fmt.Errorf("no book could be parsed from %s", searchUrl.String())
-	}
-
-	return book, nil
-}
-
-var _ BookAvailabilityPoller = PollPartilleBibliotek // assert the type
-
-var trailingTitleScrap = regexp.MustCompile(`(\s|/)+$`)
-
-func firstResult(node *html.Node) *PollResult {
-	book := &PollResult{}
-	foundOne := false
-
-	// thanks Partille library for not using a SPA <3
-	var traverseDom func(*html.Node)
-	traverseDom = func(n *html.Node) {
-		isElementWithTitle := false
-		if n.Type == html.ElementNode && n.Data == "a" {
-			for _, attr := range n.Attr {
-				if attr.Key == "class" && attr.Val == "title" {
-					// .title elements represents books
-					foundOne = true
-					isElementWithTitle = true
-					book.Title = n.FirstChild.Data
-					book.Title = trailingTitleScrap.ReplaceAllString(book.Title, "")
-				} else if attr.Key == "href" {
-					book.Url = attr.Val
-					// the detail url is relative in the DOM
-					book.Url = "https://bibliotekskatalog.partille.se" + book.Url
-				}
-			}
-			if !isElementWithTitle {
-				book.Url = ""
-			}
-		}
-
-		// continue traversing
-		for c := n.FirstChild; c != nil && !foundOne; c = c.NextSibling {
-			traverseDom(c)
-		}
-	}
-
-	traverseDom(node)
-	if !foundOne {
-		return nil
-	}
-
-	return book
 }

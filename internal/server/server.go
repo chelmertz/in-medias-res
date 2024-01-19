@@ -2,6 +2,7 @@ package server
 
 import (
 	"embed"
+	"fmt"
 	"html/template"
 	"net/http"
 
@@ -49,11 +50,23 @@ func availabilitiesPartille(storage *partille.Storage) http.Handler {
 	})
 }
 
-func NewMux(storage *partille.Storage) http.Handler {
+func test(storage *partille.Storage, poller *partille.Poller) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		res, err := partille.PollPartilleBibliotek(partille.BookQuery{
+			Id:     1,
+			Title:  "The Big Sleep",
+			Author: "Raymond Chandler",
+		})
+		fmt.Printf("res: %+v\nerr: %+v\n", res, err)
+	})
+}
+
+func NewMux(storage *partille.Storage, poller *partille.Poller) http.Handler {
 	mux := http.NewServeMux()
 	mux.Handle("/", index())
 	mux.Handle("/users", users())
 	mux.Handle("/availabilities/library/partille", availabilitiesPartille(storage))
+	mux.Handle("/test", test(storage, poller))
 
 	return mux
 }

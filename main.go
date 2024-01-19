@@ -15,7 +15,10 @@ func main() {
 	}
 	defer storage.Close()
 
-	mux := server.NewMux(storage)
+	poller := partille.NewPoller()
+	defer poller.Close()
+
+	mux := server.NewMux(storage, poller)
 	fmt.Println("Listening on http://localhost:8080")
 	http.ListenAndServe(":8080", mux)
 }
