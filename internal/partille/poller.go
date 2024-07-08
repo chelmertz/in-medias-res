@@ -2,6 +2,7 @@ package partille
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"net/url"
 	"regexp"
@@ -35,11 +36,25 @@ func PollPartilleBibliotek(q BookQuery) (*PollResult, error) {
 	fmt.Println("got this as a query", searchUrl)
 
 	// let's assume our result is on the first page, or not there at all
-	resp, err := http.Get(searchUrl)
+	req, err := http.NewRequest(http.MethodGet, searchUrl, nil)
+	req.Header.Add("User-Agent", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0")
+	if err != nil {
+		return nil, fmt.Errorf("pollpartillebibliotek: failed to construct request: %w", err)
+	}
+
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("pollpartillebibliotek: failed to get search page: %w", err)
 	}
 	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			body = []byte("could not read body")
+		}
+		return nil, fmt.Errorf("pollpartillebibliotek: got status code %d and body %s", resp.StatusCode, body)
+	}
 
 	node, err := html.Parse(resp.Body)
 	if err != nil {
