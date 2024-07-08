@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"net/url"
 	"regexp"
+	"strings"
 	"time"
 
 	"golang.org/x/net/html"
@@ -75,17 +76,16 @@ var trailingTitleScrap = regexp.MustCompile(`(\s|/)+$`)
 
 func firstResult(node *html.Node) *PollResult {
 	book := &PollResult{}
-	foundOne := false
 
 	// thanks Partille library for not using a SPA <3
 	var traverseDom func(*html.Node)
 	traverseDom = func(n *html.Node) {
 		isElementWithTitle := false
-		if n.Type == html.ElementNode && n.Data == "a" {
+		if book.Title == "" && n.Type == html.ElementNode && n.Data == "a" {
+			// approach: find one of many search results
 			for _, attr := range n.Attr {
 				if attr.Key == "class" && attr.Val == "title" {
 					// .title elements represents books
-					foundOne = true
 					isElementWithTitle = true
 					book.Title = n.FirstChild.Data
 					book.Title = trailingTitleScrap.ReplaceAllString(book.Title, "")
@@ -98,16 +98,37 @@ func firstResult(node *html.Node) *PollResult {
 			if !isElementWithTitle {
 				book.Url = ""
 			}
+		} else if book.Title == "" && n.Type == html.ElementNode && n.Data == "h1" {
+			// approach: find the single search result (a different html is rendered)
+			for _, attr := range n.Attr {
+				if attr.Key == "class" && attr.Val == "title" {
+					// .title elements represents books
+					book.Title = n.FirstChild.Data
+					book.Title = trailingTitleScrap.ReplaceAllString(book.Title, "")
+					break
+				}
+			}
+		} else if n.Type == html.ElementNode && n.Data == "span" {
+			// find the availability status of the book
+
+			// this could be anything, let's be optimistic and pretend that it represents what we searched for
+			for _, attr := range n.Attr {
+				if attr.Key == "class" && strings.Contains(attr.Val, "item-status") {
+					if strings.Contains(n.FirstChild.Data, "Available") {
+						book.IsAvailable = true
+					}
+				}
+			}
 		}
 
 		// continue traversing
-		for c := n.FirstChild; c != nil && !foundOne; c = c.NextSibling {
+		for c := n.FirstChild; c != nil; c = c.NextSibling {
 			traverseDom(c)
 		}
 	}
 
 	traverseDom(node)
-	if !foundOne {
+	if book.Title == "" {
 		return nil
 	}
 
