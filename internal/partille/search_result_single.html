@@ -5,12 +5,18 @@
 
 
 
-     
-     
+
+
+
+
+    
+
+
+
 
 
 <!DOCTYPE html>
-<!-- TEMPLATE FILE: opac-results.tt -->
+<!-- TEMPLATE FILE: opac-detail.tt -->
 
 
 
@@ -19,15 +25,15 @@
 <html lang="en" class="no-js">
 <head>
 
-<title>
+<title>Details for: 
+    Den stora sömnen / 
 
-    
-        Search results
-    
 
-&rsaquo;
-Partille bibliotek catalog
-</title>
+
+
+
+
+ &rsaquo; Partille bibliotek catalog</title>
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -36,7 +42,7 @@ Partille bibliotek catalog
 
 <link rel="shortcut icon" href="/opac-tmpl/bootstrap/images/favicon.ico" type="image/x-icon" />
 
-    <link type="text/css" href="/opac-tmpl/bootstrap/lib/jquery/jquery-ui-1.12.1.min_21.1111000.css" rel="stylesheet">
+    <link rel="stylesheet" href="/opac-tmpl/bootstrap/lib/jquery/jquery-ui-1.12.1.min_21.1111000.css" type="text/css">
 
 
     
@@ -44,12 +50,12 @@ Partille bibliotek catalog
     
 
 
-    <link rel="stylesheet" href="/opac-tmpl/bootstrap/css/opac_21.1111000.css" type="text/css">
+    <link type="text/css" href="/opac-tmpl/bootstrap/css/opac_21.1111000.css" rel="stylesheet">
 
 
 
 
-    <link media="print" rel="stylesheet" type="text/css" href="/opac-tmpl/bootstrap/css/print_21.1111000.css">
+    <link href="/opac-tmpl/bootstrap/css/print_21.1111000.css" rel="stylesheet" type="text/css" media="print">
 
 
     <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
@@ -600,8 +606,9 @@ i.fa.fa-user.fa-icon-black {
 </style>
     
 
-
-<link rel="alternate" type="application/rss+xml" title="Partille bibliotek Search RSS feed" href="https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;count=50&amp;sort_by=acqdate_dsc&amp;format=rss" />
+    <link rel="stylesheet" href="/opac-tmpl/lib/emoji-picker/css/emoji_21.1111000.css" type="text/css">
+    
+    <link type="text/css" rel="stylesheet" href="/opac-tmpl/lib/Chocolat/css/chocolat_21.1111000.css">
 </head>
 
 
@@ -618,7 +625,7 @@ i.fa.fa-user.fa-icon-black {
 
     
 
-<body ID="results" class="branch-default scrollto" >
+<body ID="opac-detail" class="branch-default scrollto" >
 
 
 
@@ -659,43 +666,43 @@ i.fa.fa-user.fa-icon-black {
                                 <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=list&amp;public=1" tabindex="-1" role="menuitem"><strong>Public lists</strong></a>
                                 
                                 
-                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=262&amp;sortfield=title" tabindex="-1" role="menuitem">Förintelsens minnesdag</a>
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=357&amp;sortfield=title" tabindex="-1" role="menuitem">Tips från bokcirkeln</a>
                                     
                                     
                                 
-                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=274&amp;sortfield=title" tabindex="-1" role="menuitem">Kreativt skrivande</a>
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=316&amp;sortfield=title" tabindex="-1" role="menuitem">Booktok</a>
                                     
                                     
                                 
-                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=263&amp;sortfield=title" tabindex="-1" role="menuitem">Förintelsens minnesdag : barn och ungdom</a>
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=317&amp;sortfield=title" tabindex="-1" role="menuitem">Booktok (engelska)</a>
                                     
                                     
                                 
-                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=264&amp;sortfield=title" tabindex="-1" role="menuitem">Förintelsens minnesdag: skönlitteratur</a>
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=286&amp;sortfield=dateadded" tabindex="-1" role="menuitem">Boktips från Go' kväll</a>
                                     
                                     
                                 
-                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=257&amp;sortfield=title" tabindex="-1" role="menuitem">Böcker som filmatiserats</a>
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=338&amp;sortfield=title" tabindex="-1" role="menuitem">17 maj: norska böcker</a>
                                     
                                     
                                 
-                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=152&amp;sortfield=title" tabindex="-1" role="menuitem">TV-spel Xbox One</a>
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=336&amp;sortfield=title" tabindex="-1" role="menuitem">Resor : romaner och reseguider</a>
                                     
                                     
                                 
-                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=154&amp;sortfield=title" tabindex="-1" role="menuitem">TV-spel övriga format</a>
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=332&amp;sortfield=title" tabindex="-1" role="menuitem">Paul Auster 1947-2024</a>
                                     
                                     
                                 
-                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=153&amp;sortfield=title" tabindex="-1" role="menuitem">TV-spel PS5</a>
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=331&amp;sortfield=title" tabindex="-1" role="menuitem">Harry Potter</a>
                                     
                                     
                                 
-                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=151&amp;sortfield=title" tabindex="-1" role="menuitem">TV-spel PS4</a>
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=330&amp;sortfield=title" tabindex="-1" role="menuitem">Tidskrifter arkeologi och historia</a>
                                     
                                     
                                 
-                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=150&amp;sortfield=title" tabindex="-1" role="menuitem">TV-spel Nintendo Switch</a>
+                                    <a class="dropdown-item" href="/cgi-bin/koha/opac-shelves.pl?op=view&amp;shelfnumber=328&amp;sortfield=title" tabindex="-1" role="menuitem">Tidskrifter historia</a>
                                     
                                     
                                 
@@ -952,934 +959,514 @@ i.fa.fa-user.fa-icon-black {
     </div>  <!-- /#modalAuth  -->
 
 
-    <div class="main">
-        <nav id="breadcrumbs" aria-label="Breadcrumb" class="breadcrumbs">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="/cgi-bin/koha/opac-main.pl">Home</a>
-                </li>
-                
-                    
-                        <li class="breadcrumb-item">
-                            <a href="/cgi-bin/koha/opac-search.pl?expanded_options=1&returntosearch=1">Advanced search</a>
-                        </li>
-                    
-                    <li class="breadcrumb-item active">
-                        
-                            <a href="#" aria-current="page" title="You searched  for '(author:(raymond* chandler*)) AND (title:(the* big* sleep*))'">Search results</a>
-                        
-                    </li>
-                
-            </ol>
-        </nav> <!-- /#breadcrumbs -->
-
-        
-
-        <div class="container-fluid">
-            <div class="row">
-                
-                    <div class="col-lg-2">
-                        <div id="facetcontainer">
-                            <!-- FACETS START -->
-                            
-
-
-
-    <div id="search-facets">
-        <h2><a href="#" class="menu-collapse-toggle">Refine your search</a></h2>
-        <ul class="menu-collapse">
-            <li id="availability_facet"><h3 id="facet-availability">Availability</h3>
-                <ul>
-                    <li>
-                        
-                            <a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;limit=available">Limit to currently available items</a>
-                        
-                    </li>
-                </ul>
-                
+<div class="main">
+    <nav id="breadcrumbs" aria-label="Breadcrumb" class="breadcrumbs">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/cgi-bin/koha/opac-main.pl">Home</a>
             </li>
-
-            
-                
-                    <li id="author_id">
-                        <h3 id="facet-authors">Authors</h3>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                            
-                            
-                        
-                        
-                        <ul>
-                            
-                            
-                              
-                            
-                            
-                              
-                            
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=author:Chandler,%20Raymond" title="Chandler, Raymond (2)">Chandler, Raymond</a></span>
-                                    
-                                      <span class="facet-count"> (2)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=author:Edlund,%20M%C3%A5rten" title="Edlund, Mårten (1)">Edlund, Mårten</a></span>
-                                    
-                                      <span class="facet-count"> (1)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=author:Mattson,%20Per" title="Mattson, Per (1)">Mattson, Per</a></span>
-                                    
-                                      <span class="facet-count"> (1)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                        </ul>
-                    </li>
-                
-            
-                
-                    <li id="itype_id">
-                        
-                        
-                        
-                        
-                        
-                        <h3 id="facet-itemtypes">Item types</h3>
-                        
-                        
-                        
-                            
-                            
-                        
-                        
-                        <ul>
-                            
-                            
-                              
-                            
-                            
-                              
-                            
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=itype:BOK" title="BOK (1)">Bok</a></span>
-                                    
-                                      <span class="facet-count"> (1)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=itype:LCD" title="LCD (1)">Ljudbok, CD</a></span>
-                                    
-                                      <span class="facet-count"> (1)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                        </ul>
-                    </li>
-                
-            
-                
-                    <li id="location_id">
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                            
-                            
-                        
-                        <h3 id="facet-locations">Locations</h3>
-                        <ul>
-                            
-                            
-                              
-                            
-                            
-                              
-                            
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=location:DEC" title="DEC (1)">Deckare</a></span>
-                                    
-                                      <span class="facet-count"> (1)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=location:LCD" title="LCD (1)">Ljudböcker</a></span>
-                                    
-                                      <span class="facet-count"> (1)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                        </ul>
-                    </li>
-                
-            
-                
-            
-                
-                    <li id="title-series_id">
-                        
-                        
-                        
-                        
-                        <h3 id="facet-series">Series</h3>
-                        
-                        
-                        
-                        
-                            
-                            
-                        
-                        
-                        <ul>
-                            
-                            
-                              
-                            
-                            
-                              
-                            
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=title-series:Philip%20Marlowe" title="Philip Marlowe (1)">Philip Marlowe</a></span>
-                                    
-                                      <span class="facet-count"> (1)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                        </ul>
-                    </li>
-                
-            
-                
-                    <li id="subject_id">
-                        
-                        
-                        <h3 id="facet-topics">Topics</h3>
-                        
-                        
-                        
-                        
-                        
-                        
-                            
-                            
-                        
-                        
-                        <ul>
-                            
-                            
-                              
-                            
-                            
-                              
-                            
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=subject:Los%20Angeles" title="Los Angeles (1)">Los Angeles</a></span>
-                                    
-                                      <span class="facet-count"> (1)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=subject:Philip%20Marlowe" title="Philip Marlowe (1)">Philip Marlowe</a></span>
-                                    
-                                      <span class="facet-count"> (1)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=subject:USA." title="USA. (1)">USA.</a></span>
-                                    
-                                      <span class="facet-count"> (1)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                        </ul>
-                    </li>
-                
-            
-                
-                    <li id="ccode_id">
-                        
-                        
-                        
-                        
-                        
-                        
-                        <h3 id="facet-collections">Collections</h3>
-                        
-                        
-                            
-                            
-                        
-                        
-                        <ul>
-                            
-                            
-                              
-                            
-                            
-                              
-                            
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=ccode:PAB" title="PAB (1)">Nedre plan</a></span>
-                                    
-                                      <span class="facet-count"> (1)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=ccode:PABF" title="PABF (1)">Skönlitteratur</a></span>
-                                    
-                                      <span class="facet-count"> (1)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                        </ul>
-                    </li>
-                
-            
-                
-                    <li id="holdingbranch_id">
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                            
-                            <h3 id="facet-holding-libraries">Holding libraries</h3>
-                        
-                        
-                        <ul>
-                            
-                            
-                              
-                            
-                            
-                              
-                            
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=holdingbranch:PAB" title="PAB (2)">Partille bibliotek</a></span>
-                                    
-                                      <span class="facet-count"> (2)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                        </ul>
-                    </li>
-                
-            
-                
-                    <li id="ln_id">
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <h3 id="facet-languages">Languages</h3>
-                        
-                            
-                            
-                        
-                        
-                        <ul>
-                            
-                            
-                              
-                            
-                            
-                              
-                            
-                            
-                            
-                            
-                            
-                                <li>
-                            
-                                  
-                                    
-                                    <span class="facet-label"><a href="/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;sort_by=popularity_dsc&amp;count=20&limit=ln:swe" title="swe (2)">Swedish</a></span>
-                                    
-                                      <span class="facet-count"> (2)</span>
-                                    
-                                  
-                                </li>
-                            
-                            
-                        </ul>
-                    </li>
-                
-            
-        </ul>
-    </div>  <!-- / #search-facets -->
-
-    
+            <li class="breadcrumb-item active">
+                <a href="#" aria-current="page"><span>Details for: </span>
+    <span class="biblio-title">Den stora sömnen / </span>
 
 
-                            <!-- FACETS END -->
-                        </div>
+
+
+
+
+</a>
+            </li>
+        </ol>
+    </nav> <!-- /#breadcrumbs -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-9">
+                <div id="catalogue_detail_biblio" class="maincontent" data-biblionumber="10330">
+
+                    <div class="bookcover">
+
+                        <div id="biblio-cover-slider" class="cover-slider">
+                            
+
+                            
+
+                            
+                                
+                                    <div class="cover-image" id="syndetics-coverimg">
+                                        <a href="https://secure.syndetics.com/index.aspx?isbn=9100452408/MC.GIF&amp;amp;client=partillebibl&amp;type=xw10&amp;upc=&amp;oclc=" title="Syndetics cover image">
+                                            <img src="https://secure.syndetics.com/index.aspx?isbn=9100452408/MC.GIF&amp;amp;client=partillebibl&amp;type=xw10&amp;upc=&amp;oclc=" alt="Syndetics cover image" />
+                                        </a>
+                                        <div class="hint">Image from Syndetics</div>
+                                    </div>
+                                
+                            
+
+                            
+
+                            
+
+                            
+
+                            
+                            
+
+                            
+                        </div> <!-- /.cover-slider -->
+
+                    </div><!-- / .bookcover -->
+
+                    <abbr class="unapi-id" title="koha:biblionumber:10330"><!-- unAPI --></abbr>
+                    
+                        <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;amp;rft.genre=book&amp;amp;rft.btitle=Den%20stora%20s%C3%B6mnen%20%2F%20&amp;amp;rft.isbn=9100452408&amp;amp;rft.au=Chandler%2C%20Raymond."></span>
+                    
+
+                    <div id="views">
+                        <span class="view current-view"><span id="Normalview"><i class="fa fa-file-text-o" aria-hidden="true"></i> Normal view</span></span>
+                        <span class="view">
+                            <a id="MARCview" class="btn btn-link" href="/cgi-bin/koha/opac-MARCdetail.pl?biblionumber=10330"><i class="fa fa-list-alt" aria-hidden="true"></i> MARC view</a>
+                        </span>
+                        
+                            <span class="view"><a id="ISBDview" class="btn btn-link" href="/cgi-bin/koha/opac-ISBDdetail.pl?biblionumber=10330"><i class="fa fa-list-ul" aria-hidden="true"></i> ISBD view</a></span>
+                            
                     </div>
-                
 
-                
                     
-                        <div class="col-lg-10 order-first order-md-first order-lg-2 maincontent">
-                    
-                
 
-                
-                    
-                        <h1 id="numresults">
-                            Your search returned 2 results.
-                            <a href="https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-search.pl?idx=au%2Cwrdl&q=raymond%20chandler&op=AND&idx=ti&q=the%20big%20sleep&amp;format=rss" class="btn btn-link rsssearchlink noprint" aria-label="Subscribe to this search">
-                                <i class="fa fa-rss rsssearchicon" aria-hidden="true" title="Subscribe to this search"></i>
-                            </a>
-                        </h1>
-                        
-                    
-                
+<div class="record" vocab="http://schema.org/" typeof="CreativeWork Product" resource="#record">
+<h1 class="title" property="name">Den stora sömnen /  <span class="title_resp_stmt">Raymond Chandler ; översättning av Mårten Edlund. </span>
+</h1>
+<span class="results_summary author h3"><span class="byAuthor">By: </span><a href="/cgi-bin/koha/opac-search.pl?q=au:%22Chandler%2C%20Raymond.%22" class="contributors"><span resource="#record"><span property="author" typeof="Person"><span property="name">Chandler, Raymond</span></span></span></a></span><span class="results_summary languages"><span class="language"><span class="label">Language: </span><span class="lang_code-swe">Swedish</span><span class="separator"> </span></span><span class="language"><span class="label">Original language: </span><span class="lang_code-eng">English</span><span class="separator"> </span></span></span><span class="results_summary series"><span class="label">Series: </span><a href="/cgi-bin/koha/opac-search.pl?q=se,phr:%22Philip%20Marlowe%20%3B%22">Philip Marlowe</a> ; 1</span><span class="results_summary isbn"><span class="label">ISBN: </span><span property="isbn">9100452408; </span><span property="isbn">978-91-0-045240-7; </span><span property="isbn">91-0-046505-4; </span><span property="isbn">978-91-0-046505-6; </span><span property="isbn">91-0-048034-7; </span><span property="isbn">978-91-0-048034-9; </span><span property="isbn">978-91-7499-691-3; </span><span property="isbn">91-7499-691-6; </span><span property="isbn">978-91-7893-828-5; </span><span property="isbn">91-7893-828-7</span></span><span class="results_summary uniform_titles"><span class="label">Uniform titles: </span><span property="alternateName"> The big sleep. </span></span><span class="results_summary subjects"><span class="label">Subject(s): </span><span property="keywords"><a class="subject" href="/cgi-bin/koha/opac-search.pl?q=su:%22Philip%20Marlowe.%22">Philip Marlowe</a></span> | <span property="keywords"><a class="subject" href="/cgi-bin/koha/opac-search.pl?q=su:%22USA.%22">USA</a></span> | <span property="keywords"><a class="subject" href="/cgi-bin/koha/opac-search.pl?q=su:%22Los%20Angeles.%22">Los Angeles</a></span></span><span class="results_summary genre"><span class="label">Genre/Form: </span><a href="/cgi-bin/koha/opac-search.pl?q=index-term-genre:%22Deckare.%22">Deckare.</a><span class="separator"> | </span><a href="/cgi-bin/koha/opac-search.pl?q=index-term-genre:%22Sk%C3%B6nlitteratur.%22">Skönlitteratur.</a><span class="separator"> | </span><a href="/cgi-bin/koha/opac-search.pl?q=index-term-genre:%22Romaner.%22">Romaner.</a></span><span class="results_summary ddc"><span class="label">DDC classification: </span>823  </span><span class="results_summary oc"><span class="label">Other classification: </span>Hcee.01  </span>
+</div>
 
-                <div id="userresults">
+
+
+
                     
 
                     
+
+                    
+
+                    
+
+                    
+
                     
                         
-                            <div class="returntosearch">
-                                <p><a href="/cgi-bin/koha/opac-search.pl?expanded_options=1&returntosearch=1">Return to the last advanced search</a></p>
-                            </div>
+                        
+
+                        
+
                         
                     
+
+                    
                     
 
-                    <!-- Search Results Table -->
+
+
                     
 
-                        <div class="searchresults">
-                            <form action="/cgi-bin/koha/opac-search.pl" method="get" name="bookbag_form" id="bookbag_form">
-                                <legend class="sr-only">Sort</legend>
+                    
+
+                    
+
+                    
+
+                </div> <!-- / #catalogue_detail_biblio -->
+
+                <div id="bibliodescriptions" class="toptabs">
+                    <ul>
+                        
+                            <li id="tab_holdings" class="ui-tabs-active">
+                        
+                            
+                            <a href="#holdings">
                                 
                                     
-                                        <input type="hidden" name="idx" value="au,wrdl"/>
-                                    
-                                        <input type="hidden" name="q" value="raymond chandler"/>
-                                    
-                                        <input type="hidden" name="op" value="AND"/>
-                                    
-                                        <input type="hidden" name="idx" value="ti"/>
-                                    
-                                        <input type="hidden" name="q" value="the big sleep"/>
-                                    
+                                        <span>Holdings</span>
                                     
                                 
+                              ( 1 )</a>
+                        </li>
+                        
+                        
+                            
+                            
+                                
+                            
+                            
+                            <li id="tab_descriptions"> <a href="#descriptions">Title notes ( 1 )</a></li>
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                        
 
-                                <div id="floating">
-                                    <div id="toolbar" class="toolbar row align-items-center">
-                                        <div id="top-pages" class="col">
-                                            
+                        
 
+                        
 
-                                        </div>
-                                        
-                                            <div class="sort_by col-sm-auto">
-                                                <label for="sort_by" class="sr-only">Sort by:</label>
-                                                <select id="sort_by" class="resort form-control form-control-sm" name="sort_by">
-                                                    <option value="relevance">Relevance</option>
-<optgroup label="Popularity">
-    
-        <option value="popularity_dsc" selected="selected">Popularity (most to least)</option>
-    
-    
-        <option value="popularity_asc">Popularity (least to most)</option>
-    
-</optgroup>
-<optgroup label="Author">
-    
-        <option value="author_az">Author (A-Z)</option>
-    
-    
-        <option value="author_za">Author (Z-A)</option>
-    
-</optgroup>
-<optgroup label="Call number">
-    
-        <option value="call_number_asc">Call number (0-9 to A-Z)</option>
-    
-    
-        <option value="call_number_dsc">Call number (Z-A to 9-0)</option>
-    
-</optgroup>
-<optgroup label="Dates">
-    
-        <option value="pubdate_dsc">Publication/Copyright date: Newest to oldest</option>
-    
-    
-        <option value="pubdate_asc">Publication/Copyright date: Oldest to newest</option>
-    
-    
-        <option value="acqdate_dsc">Acquisition date: Newest to oldest</option>
-    
-    
-        <option value="acqdate_asc">Acquisition date: Oldest to newest</option>
-    
-</optgroup>
-<optgroup label="Title">
-    
-        <option value="title_az">Title (A-Z)</option>
-    
-    
-        <option value="title_za">Title (Z-A)</option>
-    
-</optgroup>
+                        
 
-                                                </select>
+                        
 
-                                                
-                                                    <label for="results_per_page">Results per page: </label>
-                                                    <select id="results_per_page" name="count">
-                                                        
-                                                            
-                                                                <option value="20" selected="selected">Library default: 20</option>
-                                                            
-                                                        
-                                                        <option value="20" selected="selected">20</option>
-                                                        <option value="40">40</option>
-                                                        <option value="60">60</option>
-                                                        <option value="80">80</option>
-                                                        <option value="100">100</option>
-                                                    </select>
-                                                
-                                            </div> <!-- /.sort_by -->
-                                            <div id="sortsubmit" class="sort_by col-auto">
-                                                <input type="submit" class="btn btn-primary btn-sm clearfix" value="Go" />
-                                            </div> <!-- /.sort_by -->
-                                        
-                                    </div> <!-- / #toolbar -->
+                        
 
-                                    <div class="selections-toolbar toolbar noprint">
-                                        
+                        
 
-                                        <div class="check_control">
-                                            <!-- checkall, clearall are now needed for placehold -->
-                                            <span class="clearall">
-                                                <a id="CheckAll" class="btn btn-link btn-sm" href="#">Select all</a>
-                                            </span>
-                                            <span class="checkall">
-                                                <a id="CheckNone" class="btn btn-link btn-sm" href="#">Clear all</a>
-                                            </span>
-                                        </div>
+                        
 
-                                        <div class="links">
-                                            
-                                                <span class="selections">Select titles to:</span>
-                                            
-                                            
-                                                <span class="addto">
-                                                    <select class="disabled form-control form-control-sm" name="addto" id="addto">
-                                                        <option>Add to...</option>
-                                                        
-                                                        
-                                                            
-                                                            
-                                                            
-                                                            <option value="newlist">[ New list ]</option>
-                                                        
-                                                    </select>
-                                                    <input type="submit" class="btn btn-sm btn-primary" value="Save" />
-                                                </span>
-                                            
+                        
 
-                                            
-                                                <button class="btn btn-link btn-sm hold disabled" type="button">
-                                                    <i class="fa fa-fw fa-bookmark" aria-hidden="true"></i> Place hold
-                                                </button>
-                                            
+                    </ul>
 
-                                            
-                                        </div> <!-- / .links -->
-                                        
-                                    </div> <!-- / .selections-toolbar -->
-                                </div> <!-- /#floating -->
-
-                                <!-- TABLE RESULTS START -->
-                                <table class="table table-striped">
-                                    <caption class="sr-only">Results</caption>
-
-                                    <!-- Actual Search Results -->
-                                    
-                                        <tr>
-                                            
-                                            
-                                                
-                                            
-                                            <td class="selectcol">
-                                                
-                                                    
-                                                        <input type="checkbox" class="cb" id="bib10330" name="biblionumber" value="10330" aria-label="Select search result: Den stora sömnen / "/> <label for="bib10330"></label>
-                                                    
-                                                
-                                            </td>
-
-                                            
-                                            <td class="numcol hidden">
-                                                
-                                            </td>
-
-                                            
-
-                                            
-                                            <td class="bibliocol">
-                                                <div class="coverimages itemtype_">
-                                                    <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=10330">
-                                                        
-                                                            
-                                                        
-                                                        
-
-                                                        
-
-                                                        
-                                                            
-                                                                    <span title="Den stora sömnen / " id="syndetics-thumbnail1"><img src="https://secure.syndetics.com/index.aspx?isbn=9100452408/SC.GIF&amp;client=partillebibl&amp;type=xw10&amp;upc=&amp;oclc=" alt="" class="item-thumbnail" /></span>
-                                                            
-                                                        
-
-                                                        
-
-                                                        
-
-                                                        
-
-                                                        
-                                                    </a>
-
-                                                    
-
-                                                    
-
-                                                </div>
-                                                
-                                                    <!-- COinS / Openurl -->
-                                                    <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;amp;rft.genre=book&amp;amp;rft.btitle=Den%20stora%20s%C3%B6mnen%20%2F%20&amp;amp;rft.isbn=9100452408&amp;amp;rft.au=Chandler%2C%20Raymond."></span>
-                                                
-                                                <div id="title_summary_10330" class="title_summary">
-
-                                                
-
-<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=10330" class="title">Den stora sömnen /  <span class="title_resp_stmt">Raymond Chandler ; översättning av Mårten Edlund. </span></a><p><span class="byAuthor">by </span><span class="author">Chandler, Raymond.</span></p><span class="results_summary series"><span class="label">Series: </span><a href="/cgi-bin/koha/opac-search.pl?q=se,phr:%22Philip%20Marlowe%20%3B%22">Philip Marlowe</a> ; 1</span><span class="results_summary languages"><span class="language"><span class="label">Language: </span><span class="lang_code-swe">Swedish</span><span class="separator"> </span></span><span class="language"><span class="label">Original language: </span><span class="lang_code-eng">English</span><span class="separator"> </span></span></span><span class="results_summary availability"><span class="label">Availability: </span><span class="available reallyavailable"><span class="AvailabilityLabel"><strong>Items available for loan: </strong></span><span class="ItemSummary"><span class="available"><span class="ItemBranch">Partille bibliotek</span> (1)<span class="CallNumberAndLabel"><span class="LabelCallNumber">Call number: </span><span class="CallNumber">Hce</span></span>. </span></span></span></span>
+                    
 
 
+                    <div id="holdings">
+                        
+                            
+    <table class="table table-bordered table-striped" id="holdingst">
+        <caption class="sr-only">Holdings</caption>
+        <thead>
+            <tr>
 
-
-                                                
-
-                                                
-
-                                                
-
-                                                
-
-                                                
-
-                                                
-
-
-
-                                                
-
-                                                <div class="actions-menu noprint">
-    
-        
-            
                 
-                    <span class="actions"><a class="btn btn-link btn-sm" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=10330"><i class="fa fa-fw fa-bookmark" aria-hidden="true"></i> Place hold</a></span>
                 
-            
-        
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-</div>
-
-
-                                                </div>
-
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            
-                                            
-                                                
-                                            
-                                            <td class="selectcol">
-                                                
-                                                    
-                                                        <input type="checkbox" class="cb" id="bib64599" name="biblionumber" value="64599" aria-label="Select search result: Den stora sömnen"/> <label for="bib64599"></label>
-                                                    
-                                                
-                                            </td>
-
-                                            
-                                            <td class="numcol hidden">
-                                                
-                                            </td>
-
-                                            
-
-                                            
-                                            <td class="bibliocol">
-                                                <div class="coverimages itemtype_">
-                                                    <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=64599">
-                                                        
-                                                            
-                                                        
-                                                        
-
-                                                        
-
-                                                        
-                                                            
-                                                                    <span title="Den stora sömnen" id="syndetics-thumbnail2"><img src="https://secure.syndetics.com/index.aspx?isbn=917953287X/SC.GIF&amp;client=partillebibl&amp;type=xw10&amp;upc=&amp;oclc=" alt="" class="item-thumbnail" /></span>
-                                                            
-                                                        
-
-                                                        
-
-                                                        
-
-                                                        
-
-                                                        
-                                                    </a>
-
-                                                    
-
-                                                    
-
-                                                </div>
-                                                
-                                                    <!-- COinS / Openurl -->
-                                                    <span class="Z3988" title="ctx_ver=Z39.88-2004&amp;amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;amp;rft.type=audioRecording&amp;amp;rft.title=Den%20stora%20s%C3%B6mnen&amp;amp;rft.isbn=917953287X&amp;amp;rft.au=Chandler%2C%20Raymond%2C&amp;amp;rft.au=Edlund%2C%20M%C3%A5rten%2C"></span>
-                                                
-                                                <div id="title_summary_64599" class="title_summary">
-
-                                                
-
-<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=64599" class="title">Den stora sömnen <span class="title_medium">[Ljudupptagning] / </span><span class="title_resp_stmt">Raymond Chandler ; översättning Mårten Edlund. </span></a><p><span class="byAuthor">by </span><span class="author">Chandler, Raymond<span class="authordates">, 1888-1959</span><span class="relatorcode"> [aut]</span><span class="separator"> | </span>Edlund, Mårten<span class="authordates">, 1913-1987</span><span class="relatorcode"> [trl]</span><span class="separator"> | </span>Mattson, Per<span class="relatorcode"> [nrt]</span>.</span></p><span class="results_summary languages"><span class="language"><span class="label">Language: </span><span class="lang_code-swe">Swedish</span><span class="separator"> </span></span><span class="language"><span class="label">Original language: </span><span class="lang_code-eng">English</span><span class="separator"> </span></span></span><span class="results_summary rda264"><span class="label">Publisher: </span>Stockholm : Bonnier Audio, 2005</span><span class="results_summary availability"><span class="label">Availability: </span><span class="available reallyavailable"><span class="AvailabilityLabel"><strong>Items available for loan: </strong></span><span class="ItemSummary"><span class="available"><span class="ItemBranch">Partille bibliotek</span> (1)<span class="CallNumberAndLabel"><span class="LabelCallNumber">Call number: </span><span class="CallNumber">Hce/LC</span></span>. </span></span></span></span>
-
-
-
-
-                                                
-
-                                                
-
-                                                
-
-                                                
-
-                                                
-
-                                                
-
-
-
-                                                
-
-                                                <div class="actions-menu noprint">
-    
-        
-            
+                    <th id="item_itemtype" data-colname="item_itemtype" class="itype">Item type</th>
                 
-                    <span class="actions"><a class="btn btn-link btn-sm" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=64599"><i class="fa fa-fw fa-bookmark" aria-hidden="true"></i> Place hold</a></span>
                 
+                
+                    <th id="item_home_location" data-colname="item_home_location" class="item_location">Home library</th>
+                
+                
+                    <th id="item_ccode" data-colname="item_ccode" class="collection">Collection</th>
+                
+                
+                    <th id="item_shelving_location" data-colname="item_shelving_location" class="shelving_location">Shelving location</th>
+                
+                    <th id="item_callnumber" data-colname="item_callnumber" class="call_no">Call number</th>
+                
+                
+                
+                
+                    <th id="item_status" data-colname="item_status" class="status">Status</th>
+                
+                    <th id="item_datedue" data-colname="item_datedue" class="date_due">Date due</th>
+                    <th id="item_barcode" data-colname="item_barcode" class="barcode">Barcode</th>
+                
+                    <th id="item_holds" data-colname="item_holds">Item holds</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
             
-        
-    
+                <tr vocab="http://schema.org/" typeof="Offer">
+
+                
+
+                
+                    <td class="itype">
+                        
+                            
+                                <img src="/opac-tmpl/bootstrap/itemtypeimg/carredart/livre.png" title="Bok" alt="Bok" />
+                            
+                        
+                        Bok
+                    </td>
+                
+                
+
+                
+                    <td class="location" property="seller">
+                        <link property="itemOffered" href="#record" />
+                        <link property="businessFunction" href="http://purl.org/goodrelations/v1#LeaseOut">
+                        <span class="branch-info-tooltip-trigger" title="">
+                            
+                                
+                                
+                                     <a href="https://www.partille.se/uppleva--gora/bibliotek/">Partille bibliotek</a>
+                                
+                            
+                        </span>
+                        <div class="branch-info-tooltip"><p>E-post: <a href="mailto:sendto:bibliotek@partille.se">bibliotek@partille.se</a></p>
+<p>Hemsida: <a href="https://www.partille.se/uppleva--gora/bibliotek/">bibliotek.partille.se</a></p></div>
+
+                        
+
+                    </td>
+                
+
+                
+                    <td class="collection">Skönlitteratur</td>
+                
+
+                
+                    <td class="shelving_location"><span class="shelvingloc">Deckare</span></td>
+                
+
+                <td class="call_no" property="sku">
+                    
+                        Hce
+                        
+                    
+                </td>
+
+                
+
+                
+                
+                
+                <td class="status">
+    <link property="availability" href="http://schema.org/InStock" />
+
+
+
+
+
+
+
+
 
     
-        
     
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
+    <span class="item-status available">Available </span>
 
+</td>
+                
+                <td class="date_due" data-order=""></td>
+                    <td class="barcode" property="serialNumber">01410405222</td>
+                
+                    <td class="holds_count">
+                          
+                        
+                    </td>
+                
+                
+                </tr>
+            
+        </tbody>
+    </table>
+
+                            
+                                
+                                
+                                    <div id="bib_holds">
+                                        
+                                            <span>Total holds: 0</span>
+                                        
+                                        
+                                    </div>
+                                
+
+                            
+                        
+                        
+
+                        
     
-</div>
 
-
-                                                </div>
-
-                                            </td>
-                                        </tr>
-                                    
-                                </table>
-                            </form> <!-- / #bookbag_form -->
-
-                            <form id="hold_form" name="hold_form" method="get" action="/cgi-bin/koha/opac-reserve.pl">
-                                <legend class="sr-only">Pages</legend>
-                                <!-- The value will be set by holdBiblioNums() in basket.js -->
-                                <input id="hold_form_biblios" type="hidden" name="biblionumbers" value=""/>
-                            </form>
-                        </div> <!-- / .searchresults -->
-
-                        <div id="bottom-pages">
-
-</div>
+                        <br style="clear:both;" />
+                    </div> <!-- / #holdings -->
 
                     
 
                     
+                        <div id="descriptions">
+                            <div class="content_set">
+
+                                
+
+                                
+                                    <div id="marcnotes">
+                                    
+                                        <p>
+                                        
+                                            Första svenska upplaga 1947.
+                                        
+                                        </p>
+                                    
+                                    </div>
+                                
+
+                            </div> <!-- /.content_set -->
+                        </div> <!-- / #descriptions -->
                     
-                    </div> <!-- / #userresults -->
-                </div> <!-- /.span10/12 -->
-            </div> <!-- / .row -->
-        </div> <!-- / .container-fluid -->
-    </div><!-- / .main -->
+
+                    
+
+                    
+                        
+
+                        
+
+                        
+
+                        
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                        
+
+                        
+
+                        
+
+                </div> <!-- / #bibliodescriptions -->
+
+                
+
+                
+
+            </div> <!-- /.col-lg-10 -->
+
+            <div class="col-lg-3">
+                <div id="ulactioncontainer">
+
+                    
+
+                    
+
+<ul id="action">
+    
+        
+            
+                
+                    <li><a class="reserve btn btn-link btn-lg" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=10330"><i class="fa fa-fw fa-bookmark" aria-hidden="true"></i> Place hold</a></li>
+                
+            
+        
+    
+
+    <li><a class="print-large btn btn-link btn-lg" href="#"><i class="fa fa-fw fa-print" aria-hidden="true"></i> Print</a></li>
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+        <li><a class="suggest_for_purchase btn btn-link btn-lg" href="/cgi-bin/koha/opac-suggestions.pl?op=add&biblionumber=10330"><i class="fa fa-fw fa-gift" aria-hidden="true"></i> Suggest for purchase</a></li>
+    
+
+    
+
+
+    
+
+    
+    
+
+    
+        <li>
+            <div id="moresearches_menu">
+                <div class="dropdown">
+                    <a id="furthersearches" class="btn btn-link btn-lg dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-fw fa-search" aria-hidden="true"></i> More searches
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="furthersearches">
+                        <div class="dropdown-header">Search for this title in:</div>
+                        <a  href="https://libris.kb.se/" target="_blank">Den nationella bibliotekskatalogen Libris</a>
+<a  href="https://www.gotlib.goteborg.se/" target="_blank">Biblioteken i Göteborg</a>
+<a  href="https://www.ub.gu.se/sv" target="_blank">Göteborgs universitetsbibliotek</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+    
+</ul>
+
+<!-- Dublin Core Modal Form -->
+<div class="modal" id="exportModal_" tabindex="-1" role="dialog" aria-labelledby="exportModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exportModalLabel">Exporting to Dublin Core...</h3>
+                <button type="button" class="closebtn" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <form method="get" action="/cgi-bin/koha/opac-export.pl">
+                <div class="modal-body">
+                    <fieldset id="dc_fieldset">
+                        <input id="input-simple" type="radio" name="format" value="rdfdc">
+                        <label class="label_dc" for="input-simple">Simple DC-RDF</label>
+                        <br>
+                        <input id="input-oai" type="radio" name="format" value="oaidc" checked>
+                        <label class="label_dc" for="input-oai">OAI-DC</label>
+                        <br>
+                        <input id="input-srw" type="radio" name="format" value="srwdc">
+                        <label class="label_dc" for="input-srw">SRW-DC</label>
+                        <br>
+                        <input type="hidden" name="op" value="export">
+                        <input type="hidden" name="bib" value="10330">
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Export</button>
+                    <button class="btn btn-link btn-lg" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                </div>
+            </form>
+        </div> <!-- /.modal-content -->
+    </div> <!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+
+
+                    
+
+                    
+
+                    
+                </div> <!-- / .ulactioncontainer -->
+            </div> <!-- / .col-lg-3 -->
+        </div> <!-- / .row -->
+        <div class="row">
+            
+
+            
+
+            
+        </div> <!-- / .row -->
+    </div> <!-- / .container-fluid -->
+</div> <!-- / .main -->
+
+
 
 
 
@@ -2035,10 +1622,6 @@ $.widget.bridge('uitooltip', $.ui.tooltip);
     
     
     
-        var query_desc = "(author:(raymond* chandler*)) AND (title:(the* big* sleep*))";
-        var querystring = "raymond chandler the big sleep";
-        var query_cgi = "idx=au%2Cwrdl&amp;q=raymond%20chandler&amp;op=AND&amp;idx=ti&amp;q=the%20big%20sleep";
-    
 
     
         $(window).load(function() {
@@ -2099,167 +1682,493 @@ $(document).ready(function() {
 </script>
 
     
+
+<script src="/opac-tmpl/lib/jquery/plugins/jquery.dataTables.min_21.1111000.js"></script>
+<script>
+    var MSG_DT_FIRST = _("First");
+    var MSG_DT_LAST = _("Last");
+    var MSG_DT_NEXT = _("Next");
+    var MSG_DT_PREVIOUS = _("Previous");
+    var MSG_DT_EMPTY_TABLE = _("No data available in table");
+    var MSG_DT_INFO = _("Showing _START_ to _END_ of _TOTAL_");
+    var MSG_DT_INFO_EMPTY = _("No entries to show");
+    var MSG_DT_INFO_FILTERED = _("(filtered from _MAX_ total entries)");
+    var MSG_DT_LENGTH_MENU = _("Show _MENU_ entries");
+    var MSG_DT_LOADING_RECORDS = _("Loading...");
+    var MSG_DT_PROCESSING = _("Processing...");
+    var MSG_DT_SEARCH = _("Search:");
+    var MSG_DT_ZERO_RECORDS = _("No matching records found");
+    var MSG_DT_COPY_TO_CLIPBOARD = _("Copy to clipboard");
+    var MSG_DT_COPY_KEYS = _("Press <i>ctrl</i> or <i>⌘</i> + <i>C</i> to copy the table data<br>to your system clipboard.<br><br>To cancel, click this message or press escape.");
+    var MSG_DT_COPIED_ROWS = _("Copied %d rows to clipboard");
+    var MSG_DT_COPIED_ONE_ROW = _("Copied one row to clipboard");
+    var MSG_CLEAR_FILTER = _("Clear filter");
+    var MSG_DT_ALL = _("All");
+    var CONFIG_EXCLUDE_ARTICLES_FROM_SORT = _("a an the");
+</script>
+<script src="/opac-tmpl/bootstrap/js/datatables_21.1111000.js"></script>
+
+    
+
+<script>
+function KohaTable(selector, dt_parameters, columns_settings) {
+    var id = 0;
+    var hidden_ids = [];
+    var included_ids = [];
+    $(columns_settings).each( function() {
+        var named_id = $( 'thead th[data-colname="' + this.columnname + '"]', selector ).index( selector+' th' );
+
+        var used_id = dt_parameters.bKohaColumnsUseNames ? named_id : id;
+        if ( used_id == -1 ) return;
+
+        if ( this['is_hidden'] == "1" ) {
+            hidden_ids.push( used_id );
+        }
+        if ( this['cannot_be_toggled'] == "0" ) {
+            included_ids.push( used_id );
+        }
+        id++;
+    });
+
+    // By default we include all visible columns in exports and print unless they have the "noExport" class
+    var exportColumns = ":visible:not(.noExport)";
+    if( dt_parameters.hasOwnProperty("exportColumns") ){
+        // A custom buttons configuration has been passed from the page
+        exportColumns = dt_parameters["exportColumns"];
+    }
+    // Data which has the "noExport" class should not appear in print or export
+    var export_format = {
+        body: function ( data, row, column, node ) {
+            var newnode = $(node);
+
+            if ( newnode.find(".noExport").length > 0 ) {
+                newnode = newnode.clone();
+                newnode.find(".noExport").remove();
+            }
+
+            return newnode.text().replace( /\n/g, ' ' ).trim();
+        }
+    }
+
+    // Add a "Clear filter" button to table filter form field
+    dt_parameters[ "buttons" ] = [
+        {
+            fade: 100,
+            className: "dt_button_clear_filter",
+            titleAttr: _("Clear filter"),
+            enabled: false,
+            text: '<i class="fa fa-lg fa-remove" aria-hidden="true"></i> <span class="dt-button-text">' + _("Clear filter") + '</span>',
+            action: function ( e, dt, node, config ) {
+                dt.search( "" ).draw("page");
+                node.addClass("disabled");
+            }
+        },
+        {
+            extend: 'csvHtml5',
+            text: _("CSV"),
+            exportOptions: {
+                columns: exportColumns,
+                format: export_format
+            },
+        },
+        {
+            extend: 'copyHtml5',
+            text: _("Copy"),
+            exportOptions: {
+                columns: exportColumns,
+                format: export_format
+            },
+        },
+        {
+            extend: 'print',
+            text: _("Print"),
+            exportOptions: {
+                columns: exportColumns,
+                format: export_format
+            },
+        }
+    ];
+
+    if( included_ids.length > 0 ){
+        dt_parameters[ "buttons" ].push(
+            {
+                extend: 'colvis',
+                fade: 100,
+                columns: included_ids,
+                className: "columns_controls",
+                titleAttr: _("Columns settings"),
+                text: '<i class="fa fa-lg fa-gear" aria-hidden="true"></i> <span class="dt-button-text">' + _("Columns") + '</span>',
+                exportOptions: {
+                    columns: exportColumns
+                }
+            }
+        );
+    }
+
+    var table = $(selector);
+    var new_parameters = {}
+    $.extend(true, new_parameters, dataTablesDefaults, dt_parameters);
+    var default_column_defs = [
+        { "aTargets": ["string-sort"], "sType": "string" },
+        { "aTargets": ["anti-the"], "sType": "anti-the" },
+        { "aTargets": ["NoSort"], "bSortable": false, "bSearchable": false }
+    ];
+    if (new_parameters["aoColumnDefs"] === undefined) {
+        new_parameters["aoColumnDefs"] = default_column_defs;
+    } else {
+        $.extend(true, new_parameters, default_column_defs);
+    }
+
+    table.dataTable(new_parameters);
+    table.DataTable().on("column-visibility.dt", function () {
+        if (typeof columnsInit == 'function') {
+            // This function can be created separately and used to trigger
+            // an event after the DataTable has loaded AND column visibility
+            // has been updated according to the table's configuration
+            columnsInit();
+        }
+    }).columns(hidden_ids).visible(false);
+
+    $(".dt_button_clear_filter, .columns_controls, .export_controls").tooltip();
+
+    return table;
+}
+
+</script>
+
+    
+
+<script>
+    var GB_ROOT_DIR = "/opac-tmpl/bootstrap/lib/greybox/";
+</script>
+<script src="/opac-tmpl/bootstrap/lib/greybox/AJS_21.1111000.js"></script>
+<script src="/opac-tmpl/bootstrap/lib/greybox/AJS_fx_21.1111000.js"></script>
+<script src="/opac-tmpl/bootstrap/lib/greybox/gb_scripts_21.1111000.js"></script>
+<link type="text/css" href="/opac-tmpl/bootstrap/lib/greybox/gb_styles_21.1111000.css" rel="stylesheet">
+
+    
+
     
     
-    <script src="/opac-tmpl/bootstrap/js/authtoresults_21.1111000.js"></script>
-    <script src="/opac-tmpl/lib/hc-sticky_21.1111000.js"></script>
+
+    <script src="/opac-tmpl/lib/Chocolat/js/chocolat_21.1111000.js"></script>
+
     
+    <script src="/opac-tmpl/lib/emoji-picker/js/emoji-picker-all.min_21.1111000.js"></script>
     
 
     <script>
+        window.emojiPicker = new EmojiPicker({
+        emojiable_selector: '[data-emojiable=true]',
+        assetsPath: '/opac-tmpl/lib/emoji-picker/img/',
+        popupButtonClasses: 'fa fa-smile-o'
+        });
+        window.emojiPicker.discover();
+
+        var OPACPopupAuthorsSearch = "";
         
-            function holdMultiple() {
-                var checkedBiblioNums = ""; // Separated by "/"
-                var checkedCount = 0;
-                if(document.bookbag_form.biblionumber.length > 0) {
-                    for (var i=0; i < document.bookbag_form.biblionumber.length; i++) {
-                        if (document.bookbag_form.biblionumber[i].checked) {
-                            checkedBiblioNums += (document.bookbag_form.biblionumber[i].value + "/");
-                            checkedCount++;
+
+        function verify_cover_images() {
+            // Loop over each container in the template which contains covers
+            $(".cover-slider").each(function( index ){
+                var lightbox_descriptions = [];
+                var first_shown = 0;
+                $(this).find(".cover-image").each( function( index ){
+                    var div = $(this);
+                    // Find the image in the container
+                    var img = div.find("img")[0];
+                    if( img && $(img).length > 0 ){
+                        var description = "";
+                        if( img.naturalHeight == 0 && div.attr("id") != "googlejacket-coverimg" ){
+                            // No image loaded in the container. Remove the slide
+                            div.remove();
+                        } else {
+                            // All slides start hidden. If this is the first one, show it.
+                            if( first_shown == 0 ){
+                                div.show();
+                                first_shown = 1;
+                            }
+                            // Check if Amazon image is present
+                            if ( div.attr("id") == "amazon-bookcoverimg"  ) {
+                                w = img.width;
+                                h = img.height;
+                                if ((w == 1) || (h == 1)) {
+                                    // Amazon returned single-pixel placeholder
+                                    // Remove the container
+                                    div.remove();
+                                } else {
+                                    lightbox_descriptions.push(_("Amazon cover image (<a href='%s'>see the original image</a>)").format($(img).data('link')));
+                                }
+                            } else if( div.attr("id") == "custom-coverimg" ){
+                                if ( (img.complete != null) && (!img.complete) || img.naturalHeight == 0 ) {
+                                    // No image was loaded via the CustomCoverImages system preference
+                                    // Remove the container
+                                    div.remove();
+                                } else {
+                                    lightbox_descriptions.push(_("Custom cover image"));
+                                }
+                            } else if( div.attr("id") == "syndetics-coverimg" ){
+                                lightbox_descriptions.push(_("Image from Syndetics"))
+                            } else if( div.attr("id") == "googlejacket-coverimg" ){
+                                lightbox_descriptions.push(_("Image from Google Books (<a href='%s'>see the original image</a>)").format($(img).data('link')));
+                            } else if( div.attr("id") == "openlibrary-coverimg" ){
+                                lightbox_descriptions.push(_("Image from OpenLibrary (<a href='%s'>see the original image</a>)").format($(img).data('link')));
+                            } else if( div.attr("id") == "coce-coverimg" ){
+                                // Identify which service's image is being loaded by Coce
+                                var coce_description;
+                                if( $(img).attr("src").indexOf('amazon.com') >= 0 ){
+                                    coce_description = _("Coce image from Amazon.com");
+                                } else if( $(img).attr("src").indexOf('google.com') >= 0 ){
+                                    coce_description = _("Coce image from Google Books");
+                                } else if( $(img).attr("src").indexOf('openlibrary.org') >= 0 ){
+                                    coce_description = _("Coce image from Open Library");
+                                }
+                                div.find(".hint").html(coce_description);
+                                lightbox_descriptions.push(coce_description);
+                            } else if ( div.attr("id") == "bakertaylor-coverimg" ){
+                                lightbox_descriptions.push(_("Image from Baker &amp; Taylor"));
+                            } else if ( div.attr("class") == "cover-image local-coverimg" ) {
+                                lightbox_descriptions.push(_("Local cover image"));
+                            } else {
+                                lightbox_descriptions.push(_("Cover image source unknown"));
+                            }
                         }
+                    } else {
+                        div.remove();
+                    }
+                });
+
+                // Lightbox for cover images
+                Chocolat(this.querySelectorAll('.cover-image a'), {
+                    description: function(){
+                        return lightbox_descriptions[this.settings.currentImageIndex];
+                    }
+                });
+
+            });
+
+            $(".cover-slider").each(function(){
+                var coverSlide = this;
+                var coverImages = $(this).find(".cover-image");
+                if( coverImages.length > 1 ){
+                    coverImages.each(function( index ){
+                        // If more that one image is present, add a navigation link
+                        // for activating the slide
+                        var covernav = $("<a href=\"#\" data-num=\"" + index + "\" class=\"cover-nav\"></a>");
+                        if( index == 0 ){
+                            // Set the first navigation link as active
+                            $(covernav).addClass("nav-active");
+                        }
+                        $(covernav).html("<i class=\"fa fa-circle\"></i>");
+                        $(coverSlide).append( covernav );
+                    });
+                }
+
+                if( $(coverSlide).find(".cover-image:visible").length < 1 ){
+                    $(coverSlide).remove();
+                } else {
+                    $(coverSlide).addClass("cover-slides");
+                }
+            });
+
+            $(".cover-slider").on("click",".cover-nav", function(e){
+                e.preventDefault();
+                var cover_slider = $(this).parent();
+                // Adding click handler for cover image navigation links
+                var num = $(this).data("num");
+                $(cover_slider).find(".cover-nav").removeClass("nav-active");
+                $(this).addClass("nav-active");
+                $(cover_slider).find(".cover-image").hide();
+                $(cover_slider).find(".cover-image").eq( num ).show();
+            });
+
+            $("#editions img").each(function(i){
+                if ( this.src.indexOf('amazon.com') >= 0 ) {
+                    w = this.width;
+                    h = this.height;
+                    if ((w == 1) || (h == 1)) {
+                        this.src = 'https://images-na.ssl-images-amazon.com/images/G/01/x-site/icons/no-img-sm.gif';
+                    } else if ( (this.complete != null) && (!this.complete) || this.naturalHeight == 0 ) {
+                        this.src = 'https://images-na.ssl-images-amazon.com/images/G/01/x-site/icons/no-img-sm.gif';
                     }
                 }
+            });
+        } /* /verify_images */
 
-                if (checkedCount > 0) {
-                    holdBiblioNums(checkedBiblioNums);
-                } else {
-                    alert( __("No item was selected") );
-                }
-            }
+        let counter_wait = 0;
+        function wait_for_images(cb){
 
-            function holdBiblioNums(numList) {
-                // numList: biblio numbers separated by "/"
-                $("#hold_form_biblios").attr("value", numList);
-                $("#hold_form").submit();
-            }
-        
+            var loaded = 1;
+            counter_wait++;
 
-        
+            
 
+            
 
-        function enableCheckboxActions(){
-            // Enable/disable controls if checkboxes are checked
-            var checkedBoxes = $(".cb:checked");
-            var controls = $(".selections-toolbar .links a, .selections-toolbar .links input, .selections-toolbar .links select, .selections-toolbar .links label, .selections-toolbar .links button");
-            if ($(checkedBoxes).size()) {
-                $(".selections").html(_("With selected titles: "));
-                $(controls).removeClass("disabled");
+            
+
+            if (!loaded && counter_wait < 50) {// Do not wait more than 5 seconds
+                window.setTimeout(function(){wait_for_images(cb);}, 100);
             } else {
-                $(".selections").html(_("Select titles to: "));
-                $(controls).addClass("disabled");
+                if (counter_wait >= 50 ) {
+                    console.log("Could not retrieve the images")
+                }
+                cb();
             }
         }
 
-        
-
-        $(document).ready(function(){
-
-            $(".moretoggle").click(function(e){
-                e.preventDefault();
-                $(this).siblings(".collapsible-facet").toggle();
-                $(this).siblings(".moretoggle").toggle();
-                $(this).toggle();
-            });
-
-            
-
-            $(".cb").click(function(){
-                enableCheckboxActions();
-            });
-            enableCheckboxActions();
-
-            $(".br-readonly a").on("click", function(e){
-                e.preventDefault();
-            });
-
-            $('.resort').change(function() {
-                $('#bookbag_form').submit();
-            });
-
-            $('#results_per_page').change(function() {
-                $('#bookbag_form').submit();
-            });
-
-            
-                
-                    $("#addto").on("change",function(){
-                        cartList();
-                    });
-                    $(".addto").find("input:submit").click(function(){
-                        cartList();
-                        return false;
-                    });
-                
-            
-
-            function cartList(){
-                addtoOption = $("#addto").find("option:selected");
-                addtoval = addtoOption.val();
-                if(addtoval == "addtolist"){
-                    var shelfnumber = addtoOption.attr("id").replace("s","");
-                    if (vShelfAdd()) {
-                        Dopop('/cgi-bin/koha/opac-addbybiblionumber.pl?selectedshelf='+shelfnumber+'&' + vShelfAdd());
-                    }
-                    return false;
-                } else if(addtoval == "newlist"){
-                    
-                        alert(_("You must be logged in to create or add to lists"));
-                    
-                    return false;
-                } else if(addtoval == "morelists"){
-                    
-                        alert(_("You must be logged in to create or add to lists"));
-                    
-                    return false;
-                }
-                if(addtoval == "addtocart" || $("#addto").attr("class") == "addtocart"){
-                    addMultiple();
-                    return false;
-                }
-            }
-            $("#CheckAll").on("click",function(e){
-                e.preventDefault();
-                $(".cb").prop("checked", true);
-                enableCheckboxActions();
-            });
-            $("#CheckNone").on("click",function(e){
-                e.preventDefault();
-                $(".cb").prop("checked", false);
-                enableCheckboxActions();
-            });
-
-            $(".hold").on("click", function(e){
-                e.preventDefault();
-                holdMultiple();
-            });
-
-            
-                
-                
-                
-                
-            
-
-            
-
-            
-            
-            
-            
-
-            
-
-            $("input.newtag").on('keydown', function(e){
-                if (e.keyCode == 13) { e.preventDefault(); }
-            });
-
-            Sticky = $("#floating");
-            Sticky.hcSticky({
-                stickTo: ".searchresults",
-                stickyClass: "floating"
-            });
-
+        $(window).load(function() {
+            wait_for_images(verify_cover_images);
         });
+
+        $(document).ready(function() {
+
+            
+
+            $('#bibliodescriptions').tabs();
+            $(".branch-info-tooltip-trigger").uitooltip({
+                position: { my: "left+15 center", at: "right center" },
+                show: 50,
+                hide: 50,
+                content: function(){
+                    var element = $(this).next("div");
+                    return element.html();
+                }
+            });
+
+            
+
+            var columns_settings = [{"cannot_be_toggled":0,"is_hidden":0,"columnname":"item_cover","cannot_be_modified":0},{"cannot_be_modified":0,"columnname":"item_itemtype","is_hidden":0,"cannot_be_toggled":0},{"is_hidden":1,"cannot_be_toggled":0,"columnname":"item_current_location","cannot_be_modified":0},{"is_hidden":1,"cannot_be_toggled":0,"columnname":"item_home_location","cannot_be_modified":0},{"columnname":"item_shelving_location","cannot_be_modified":0,"cannot_be_toggled":0,"is_hidden":0},{"cannot_be_modified":0,"columnname":"item_ccode","cannot_be_toggled":0,"is_hidden":0},{"columnname":"item_callnumber","cannot_be_modified":0,"is_hidden":0,"cannot_be_toggled":0},{"is_hidden":1,"cannot_be_toggled":0,"cannot_be_modified":0,"columnname":"item_materials"},{"is_hidden":0,"cannot_be_toggled":0,"cannot_be_modified":0,"columnname":"item_enumchron"},{"is_hidden":0,"cannot_be_toggled":0,"cannot_be_modified":0,"columnname":"item_url"},{"columnname":"item_copy","cannot_be_modified":0,"is_hidden":0,"cannot_be_toggled":0},{"columnname":"item_status","cannot_be_modified":0,"is_hidden":0,"cannot_be_toggled":0},{"cannot_be_modified":0,"columnname":"item_notes","is_hidden":0,"cannot_be_toggled":0},{"is_hidden":0,"cannot_be_toggled":0,"columnname":"item_datedue","cannot_be_modified":0},{"is_hidden":1,"cannot_be_toggled":0,"cannot_be_modified":0,"columnname":"item_barcode"},{"cannot_be_toggled":0,"is_hidden":1,"columnname":"item_holds","cannot_be_modified":0},{"is_hidden":0,"cannot_be_toggled":0,"columnname":"item_priority","cannot_be_modified":0},{"cannot_be_toggled":0,"is_hidden":0,"cannot_be_modified":0,"columnname":"item_coursereserves"}];
+
+            KohaTable("#holdingst", {
+                dom: '<"clearfix">t',
+                "columnDefs": [
+                    { "targets": [ -1 ], "sortable": false, "searchable": false },
+                    ],
+                "bKohaColumnsUseNames": true,
+                "autoWidth": false
+            }, columns_settings);
+
+            KohaTable("#otherholdingst", {
+                dom: '<"clearfix">t',
+                "columnDefs": [
+                    { "targets": [ -1 ], "sortable": false, "searchable": false },
+                    ],
+                "bKohaColumnsUseNames": true,
+                "autoWidth": false
+            }, columns_settings);
+
+            var serial_column_settings = [{"is_hidden":0,"cannot_be_toggled":0,"cannot_be_modified":0,"columnname":"serial_serialseq"},{"cannot_be_modified":0,"columnname":"serial_publisheddate","cannot_be_toggled":0,"is_hidden":0},{"is_hidden":0,"cannot_be_toggled":0,"columnname":"serial_planneddate","cannot_be_modified":0},{"is_hidden":0,"cannot_be_toggled":0,"cannot_be_modified":0,"columnname":"serial_status"},{"cannot_be_modified":0,"columnname":"serial_notes","cannot_be_toggled":0,"is_hidden":0}];
+
+            KohaTable("#subscriptionst", {
+                dom: '<"clearfix">t',
+                "sorting": [[ 1, "desc" ]],
+                "autoWidth": false,
+                "bKohaColumnsUseNames": true
+            }, serial_column_settings);
+
+            
+
+            
+            
+                var default_order_index = 0;
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+        });
+
+        $(document).ready(function() {
+            if( OPACPopupAuthorsSearch == "1" ){
+                var terms = {
+                    contributors : {
+                        "label" : "author",
+                        "keyword_search" : "au:",
+                    },
+                    subject : {
+                        "label" : "subject",
+                        "keyword_search" : "su:",
+                    }
+                }
+                $(".contributors,.subject").on("click", function(e){
+                    e.preventDefault();
+                    var term = $(this).attr("class");
+                    var selected_term = $(this).text();
+                    var term_links = $("." + term );
+                    if( term_links.length > 1 ){
+                        term_links.each(function( index ){
+                            var authid = "";
+                            var preselected = false;
+                            var search_label = $(this).text().trim();
+                            if( $(this).text() == selected_term ){ preselected = true }
+                            if( $(this).hasClass("authority_link") ){
+                                authid = $(this).data("authid");
+                                search_string = "an:" + authid;
+                            } else {
+                                search_string = terms[term]["keyword_search"] + encodeURIComponent( search_label );
+                            }
+                            var termLink = $("<li>")
+                                .append( $("<input>", { type: "checkbox", class: "select_term", value: search_string, id: terms[term]["label"] + index } ).prop("checked", preselected ) )
+                                .append("&nbsp;")
+                                .append( $("<label>", { for: terms[term]["label"] + index, text: search_label } ) )
+                            $("#termsList").append( termLink );
+                            $("#multiSearch").modal("show");
+                        });
+                    } else {
+                        location.href = $(this).attr("href");
+                    }
+                });
+
+                $("#multiSearch").on("hide.bs.modal", function(){
+                    $("#termsList").html("");
+                });
+
+                $(".check_all").on("click", function(e){
+                    e.preventDefault();
+                    $(".select_term").each(function(){
+                        $(this).prop("checked", true );
+                    });
+                });
+
+                $(".check_none").on("click", function(e){
+                    e.preventDefault();
+                    $(".select_term").each(function(){
+                        $(this).prop("checked", false );
+                    });
+                });
+
+                $("#validMultiSearch").on("click", function(e){
+                    e.preventDefault();
+                    multiSearchRequest();
+                });
+            } /* if( OPACPopupAuthorsSearch == "1" ) */
+        });
+
+        function multiSearchRequest(){
+            var values = [];
+            $(".select_term").each(function(){
+                if( $(this).prop("checked") ){
+                    values.push( $(this).val() );
+                }
+            });
+
+            if (values.length > 0) {
+                var request = "/cgi-bin/koha/opac-search.pl?q=" + values.join(' and ');
+                location.href = request;
+            }
+
+        }
     </script>
 
 
@@ -2820,17 +2729,76 @@ $('#password-recovery > form > p').html( function(index,currentcontent) {
 // SLUT ÄNDRAR TEXT FÖR FORMULÄR FÖR ÅTERSTÄLLNING AV PINKOD //
 
 
+// RULLISTORNA PÅ OPACS STARTSIDA //
+/////////////////////////////////////
+//Hämtar från FAN & PABF i rullistorna nederst på OPAC //
+$(document).ready(function() {
+  $("div#kolumn1 form").on("submit", function() {
+    if ($(this).find("select").val() == "mc-loc:FAN") {
+      $(this).append('<input type="hidden" name="limit" value="CCODE:PABF" />');
+    }
+  });
+});
+// SLUT Hämtar från FAN & PABF i rullistorna nederst på OPAC //
+
+
+// Hämtar från SF & PABF i rullistorna nederst på OPAC //
+$(document).ready(function() {
+  $("div#kolumn1 form").on("submit", function() {
+    if ($(this).find("select").val() == "mc-loc:SF") {
+      $(this).append('<input type="hidden" name="limit" value="CCODE:PABF" />');
+    }
+  });
+});
+// SLUT Hämtar från SF & PABF i rullistorna nederst på OPAC //
+
+//Ändrar text och färg på text vid betalning av avgifter//
+$('#useraccount > form > fieldset > legend').html( function(index,currentcontent) {
+  return currentcontent.replace("Betala valda avgifter", "OBS! Bocka i de avgifter du vill betala innan du trycker på knappen Betala."); 
+});
+
+$('#useraccount > form > fieldset > legend').css('color','#FF0000');
+//SLUT Ändrar text och färg på text vid betalning av avgifter//
+
 
     </script>
 
 
 
         <script src="/api/v1/contrib/coverflow/static/jquery-flipster/jquery.flipster.min.js"></script>
-        <script>$(document).ready(function(){$('#cf_1').load("/api/v1/contrib/coverflow/reports/95",function(){$('.koha-coverflow img').on("load",function(){if(this.naturalHeight==1){$(this).attr("src","https://raw.githubusercontent.com/bywatersolutions/web-assets/master/NoImage.png");}});var opt={'items':'.item','minfactor':15,'distribution':1.5,'scalethreshold':0,'staticbelowthreshold':false,'titleclass':'itemTitle','selectedclass':'selectedItem','scrollactive':true,'step':{'limit':4,'width':10,'scale':true}};$('#cf_1').flipster({autoplay:'',click:'',loop:'',scrollwheel:'',spacing:'0',style:'grid',touch:'',});});$('#cf_2').load("/api/v1/contrib/coverflow/reports/105",function(){$('.koha-coverflow img').on("load",function(){if(this.naturalHeight==1){$(this).attr("src","https://raw.githubusercontent.com/bywatersolutions/web-assets/master/NoImage.png");}});var opt={'items':'.item','minfactor':15,'distribution':1.5,'scalethreshold':0,'staticbelowthreshold':false,'titleclass':'itemTitle','selectedclass':'selectedItem','scrollactive':true,'step':{'limit':4,'width':10,'scale':true}};$('#cf_2').flipster({autoplay:'',click:'',loop:'',scrollwheel:'',spacing:'0',style:'grid',touch:'',});});});
+        <script>$(document).ready(function(){$('#cf_1').load("/api/v1/contrib/coverflow/reports/205",function(){$('.koha-coverflow img').on("load",function(){if(this.naturalHeight==1){$(this).attr("src","https://raw.githubusercontent.com/bywatersolutions/web-assets/master/NoImage.png");}});var opt={'items':'.item','minfactor':15,'distribution':1.5,'scalethreshold':0,'staticbelowthreshold':false,'titleclass':'itemTitle','selectedclass':'selectedItem','scrollactive':true,'step':{'limit':4,'width':10,'scale':true}};$('#cf_1').flipster({autoplay:'',click:'',loop:'',scrollwheel:'',spacing:'0',style:'grid',touch:'',});});$('#cf_2').load("/api/v1/contrib/coverflow/reports/204",function(){$('.koha-coverflow img').on("load",function(){if(this.naturalHeight==1){$(this).attr("src","https://raw.githubusercontent.com/bywatersolutions/web-assets/master/NoImage.png");}});var opt={'items':'.item','minfactor':15,'distribution':1.5,'scalethreshold':0,'staticbelowthreshold':false,'titleclass':'itemTitle','selectedclass':'selectedItem','scrollactive':true,'step':{'limit':4,'width':10,'scale':true}};$('#cf_2').flipster({autoplay:'',click:'',loop:'',scrollwheel:'',spacing:'0',style:'grid',touch:'',});});});
 </script>
     
+<script> const item_paths = [];var host = "https://wagnerguide.com/c/partille/bibliotek";var prompt = "Locate shelf";var collections = {};var locations = {};collections["Skönlitteratur"] = "PABF";locations["Deckare"] = "DEC";
+        $('#holdingst').find("tbody").find("tr").each(function(index) {
 
+          var collectionDesc = $(this).find(".collection").text();
+          var shelvingLocationspan = $(this).find(".shelving_location").find(".shelvingloc");
+          var shelvingLocation = $(shelvingLocationspan).text();
+
+          var callNoTd = $(this).find(".call_no");
+
+          var t = $(callNoTd).text();
+
+          var b = $.trim(t).split(' ');
+
+          var shelf = b[0];
+          
+          var location = shelvingLocation in locations ? locations[shelvingLocation] : "";
+          var ccode = collectionDesc in collections ? collections[collectionDesc] : "";
+
+          var wagnerGuidePath = host + "?department=" + ccode + "&location=" + location + "&shelf=" + shelf;
+
+          $(callNoTd).append("<a href=\"" + wagnerGuidePath + "\">" + prompt + "</a>");
+          });
+
+</script>
 </body>
 </html>
+
+
+
+
+
 
 

@@ -21,8 +21,26 @@ func testFile(filename string) *html.Node {
 	return node
 }
 
-func TestCanParseResult(t *testing.T) {
-	node := testFile("search_result_example.html")
+func TestCanParseMultipleResults(t *testing.T) {
+	node := testFile("search_result_four.html")
+	result := firstResult(node)
+	if result == nil {
+		t.Fatalf("expected result, got nil")
+	}
+
+	expectedTitle := "Den stora sömnen"
+	if result.Title != expectedTitle {
+		t.Errorf("expected title to be '%s', got '%s'", expectedTitle, result.Title)
+	}
+
+	expectedUrl := "https://bibliotekskatalog.partille.se/cgi-bin/koha/opac-detail.pl?biblionumber=10330"
+	if result.Url != expectedUrl {
+		t.Errorf("expected url to be %s, got %s", expectedUrl, result.Url)
+	}
+}
+
+func TestCanParseSingleResults(t *testing.T) {
+	node := testFile("search_result_single.html")
 	result := firstResult(node)
 	if result == nil {
 		t.Fatalf("expected result, got nil")
